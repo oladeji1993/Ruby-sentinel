@@ -1,0 +1,61 @@
+<div class="login-container">
+  <div class="login-background">
+    <div class="logo-container">
+      <img src="assets/images/auth/logo.svg" alt="Logo" class="logo" />
+      <!-- <h1>RUBYSentinel</h1> -->
+    </div>
+    <div class="login-form">
+      <h2>Welcome Back</h2>
+      <p>Enter your credentials to continue.</p>
+      <form>
+        <div class="form-container">
+          <div class="input-container">
+            <label class="label" for="email"> Username </label>
+            <input matInput class="custom-input form-control" type="text" />
+          </div>
+
+          <div class="password-input">
+            <div class="input-container">
+              <label class="label" for="email"> Password </label>
+              <input
+                [type]="hide ? 'text' : 'password'"
+                class="custom-input"
+                type="password"
+              />
+
+              <!-- <div class="show_password">
+                <mat-icon
+                  matSuffix
+                  (click)="hide = !hide"
+                  >{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
+              </div> -->
+            </div>
+            <!-- <mat-error
+              class="alert"
+              *ngIf="
+                (loginFormControl['password'].touched || submitted) &&
+                loginFormControl['password'].invalid
+              "
+            >
+              <img
+                src="/assets/icons/error.svg"
+                alt=""
+                class="img-fluid error-icon"
+              />
+              {{ getErrorMessage("password") }}
+            </mat-error> -->
+          </div>
+
+          <div class="input-container">
+            <label class="label" for="email"> Token </label>
+            <input matInput class="custom-input form-control" type="number" />
+          </div>
+        </div>
+
+        <div class="login-btn">
+          <button routerLink="/dashboard" class="app_medium_button">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

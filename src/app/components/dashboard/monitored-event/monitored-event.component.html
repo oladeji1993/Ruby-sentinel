@@ -1,0 +1,73 @@
+<div id="monitored-event">
+  <div class="header">
+    <div class="tab-name">Monitored events</div>
+  </div>
+
+  <div class="filter-container">
+    <div class="inner-filter">
+      <div class="view">View:</div>
+      <div class="filter-dropdown">
+        <div class="input-container">
+          <select formControlName="apiType" style="width: 100%">
+            <option>All Events</option>
+            <option>Timed event</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="filter-input">
+      <div class="form-container input-container">
+        <input
+          matInput
+          placeholder="Search from table"
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+      <div>
+        <button>+ Add New Event</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- table area -->
+  <div class="main-container">
+    <div class="table-container">
+      <div style="overflow-x: auto">
+        <table>
+          <thead>
+            <tr>
+              <td>EVENT NAME</td>
+              <td>EVENT KEYWORD</td>
+              <td>EVENT TYPE</td>
+              <td>DESCRIPTION</td>
+              <!-- <td></td> -->
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <div
+                class="no-record"
+                *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+              >
+                No record Found
+              </div> -->
+            <ng-container *ngFor="let event of events">
+              <tr>
+                <td>{{ event.title }}</td>
+                <td>
+                  <span class="event_key">{{ event.event }}</span>
+                </td>
+                <td>{{ event.category }}</td>
+                <td>{{ event.description }}</td>
+                <td>
+                  <img src="/assets/images/dashboard/more-options.svg" alt="" />
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

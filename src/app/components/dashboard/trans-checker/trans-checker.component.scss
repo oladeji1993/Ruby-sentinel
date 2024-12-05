@@ -1,0 +1,117 @@
+#trans-checker {
+  .header {
+    padding: 0.5rem 1rem;
+    display: flex;
+    padding-bottom: 1.5rem;
+    // justify-content: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+
+    .tab-name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      text-align: left;
+    }
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .filter-btns {
+      display: flex;
+      gap: 1rem;
+      max-width: 320px;
+      background-color: rgba(233, 236, 239, 1);
+      border-radius: 14px;
+      padding: 0px 9px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      .detected {
+        background-color: rgba(52, 58, 64, 1);
+        color: #fff;
+        width: 86px;
+        // height: 32px;
+        text-align: center;
+        padding: 5px;
+        border-radius: 12px;
+      }
+    }
+
+    .inner-filter {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+
+      .view {
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
+    }
+
+    select {
+      width: 100%;
+      padding: 0.65rem;
+      border-radius: 8px;
+      outline: none;
+      border: none;
+      border: 1px solid #e1e1e1;
+    }
+
+    .filter-dropdown {
+      width: 365px;
+    }
+
+    .filter-input {
+      display: flex;
+      gap: 1rem;
+      width: 512px;
+
+      button {
+        width: 160px;
+        height: 40px;
+        max-width: 380px;
+        padding: 8px 16px 8px 16px;
+        gap: 8px;
+        border-radius: 16px;
+        outline: none;
+        border: none;
+        color: rgba(215, 34, 106, 1);
+        background-color: #f9dee9;
+      }
+    }
+  }
+
+  .main-container {
+    background-color: #ebebeb;
+    height: 100vh;
+
+    .empty-state {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding-top: 5rem;
+      .empty-state-content {
+        width: 400px;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        .create {
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

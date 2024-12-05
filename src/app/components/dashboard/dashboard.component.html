@@ -1,0 +1,23 @@
+<ng-container *ngIf="!isSmallerScreen">
+  <mat-drawer-container style="height: 100vh">
+    <mat-drawer-content>
+      <div
+        [ngClass]="{
+          'full-width-header': isSmallScreen,
+          'fixed-width-header': !isSmallScreen
+        }"
+        class="nav-container"
+      >
+        <app-header></app-header>
+      </div>
+      <div id="rootContainer">
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-drawer-content>
+    <mat-drawer mode="side" opened #drawer class="mat-sidenav">
+      <app-side-bar></app-side-bar>
+    </mat-drawer>
+  </mat-drawer-container>
+</ng-container>

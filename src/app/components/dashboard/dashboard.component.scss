@@ -1,0 +1,56 @@
+#dashboard {
+  background-color: #fff;
+}
+
+mat-icon {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.mat-sidenav {
+  min-width: 17.188rem;
+  padding: 1rem 1rem 1rem 0rem;
+}
+
+mat-drawer {
+  background: #fff;
+  position: fixed;
+  min-height: 100%;
+}
+
+mat-drawer-content {
+  background-color: #fff;
+  // overflow: hidden;
+}
+
+.nav-container {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  z-index: 1000;
+}
+
+.full-width-header {
+  width: 100%;
+}
+
+.fixed-width-header {
+  width: calc(100vw - 275px);
+}
+
+#container {
+  margin-top: 7rem;
+  overflow-x: scroll;
+}
+
+#rootContainer {
+  .container {
+    padding-top: 6rem;
+    // margin: 0rem 10rem
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 100%;
+  }
+}

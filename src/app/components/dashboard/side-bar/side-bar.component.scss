@@ -1,0 +1,106 @@
+#side-nav {
+  .rubby-logo {
+    display: flex;
+    justify-content: center;
+  }
+  position: relative;
+
+  .app-name {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .nav-contents {
+    padding-top: 2rem;
+
+    .search-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 0.8rem;
+      input {
+        width: 195px;
+        height: 42px;
+        border-radius: 10px;
+        background: rgba(245, 245, 245, 1);
+        padding-left: 30px;
+        outline: none;
+        border: none;
+        // border: 1px solid #e1e1e1;
+      }
+
+      i.fa-search {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .bottom-content {
+    position: sticky;
+    bottom: 0;
+    background-color: #f1f1f1;
+    padding: 16px;
+  }
+
+  .progress-percentage {
+    padding-top: 0.4rem;
+  }
+
+  .nav-item {
+    display: flex;
+    margin-top: 2rem;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    font-weight: 400;
+    text-align: center;
+    // height: 48px;
+    // justify-content: center;
+    align-items: center;
+    padding-left: 1.5rem;
+
+    img {
+      margin-left: 13px;
+    }
+
+    .nav-title {
+      font-size: 14px;
+      cursor: pointer;
+      padding-left: 0.5rem;
+      font-family: Inter;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+      // a{
+      //   padding-top: 20px;
+      // }
+
+      //   img {
+      //   }
+    }
+  }
+  .is-active {
+    background-color: rgba(215, 34, 106, 0.2);
+    padding: 0.2rem 0rem;
+    color: rgba(215, 34, 106, 1);
+    font-family: Inter;
+    font-size: 14px;
+    height: 48px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    padding-left: 1.5rem;
+
+    // img{
+    //   padding-left:10px
+    // }
+  }
+}

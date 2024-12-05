@@ -1,0 +1,100 @@
+<div id="blacklist">
+  <div class="header">
+    <div class="tab-name">BlackList</div>
+  </div>
+
+  <div class="filter-container">
+    <div class="inner-filter">
+      <!-- <div class="view">View:</div> -->
+      <div class="filter-dropdown">
+        <div class="input-container">
+          <select formControlName="apiType" style="width: 100%">
+            <option>All Types</option>
+            <option>Timed event</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-container input-container">
+        <input
+          matInput
+          placeholder="Quick find"
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+      <div>
+        <button>+ Add New Item</button>
+      </div>
+    </div>
+    <div class="filter-input">
+      <!-- <div class="form-container input-container">
+        <input
+          matInput
+          placeholder="Search from table"
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+      <div>
+        <button>+ Add New Event</button>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="content">
+      <div class="table-container">
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <td>Item Name</td>
+                <td>Type</td>
+                <td>Code</td>
+                <td>Description</td>
+                <td>Added By</td>
+                <td>Added On</td>
+                <td>Edit</td>
+                <td>Del...</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <div
+                      class="no-record"
+                      *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                    >
+                      No record Found
+                    </div> -->
+              <ng-container *ngFor="let item of items">
+                <tr>
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <span>{{ item.type }}</span>
+                  </td>
+                  <td>
+                    <span>{{ item.code }}</span>
+                  </td>
+                  <td>{{ item.description }}</td>
+                  <td>{{ item.createdBy }}</td>
+                  <td>{{ item.date }}</td>
+                  <td>
+                    <img
+                      src="/assets/images/dashboard/edit.svg"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <img
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

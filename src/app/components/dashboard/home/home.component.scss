@@ -1,0 +1,91 @@
+#home {
+  .header {
+    padding: 0.5rem 1rem;
+    display: flex;
+    padding-bottom: 1.5rem;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24.2px;
+    text-align: left;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+
+    .tab-name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      text-align: left;
+    }
+
+    .last-updated {
+      font-family: Inter;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: rgba(150, 152, 154, 1);
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .main-content {
+    background-color: #ebebeb;
+    height: 100vh;
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+      ); /* Responsive columns */
+      gap: 20px; /* Space between cards */
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    /* Card Styling */
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    /* Example of specific card styling */
+    .metrics {
+      grid-column: span 2; /* Make this card span 2 columns */
+    }
+
+    .fraud-trend-chart {
+      grid-column: span 2; /* Make this card span 2 columns */
+    }
+
+    .health-check {
+      grid-column: span 1; /* Single column for smaller cards */
+    }
+
+    @media (max-width: 768px) {
+      .metrics {
+        grid-column: span 1; /* Adjust large cards to span 1 column */
+      }
+
+      .fraud-trend-chart {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard {
+        grid-template-columns: 1fr; /* Stack all cards in a single column */
+      }
+
+      .card {
+        padding: 15px;
+      }
+    }
+  }
+
+  
+}

@@ -1,0 +1,122 @@
+<div id="side-nav">
+  <div class="rubby-logo">
+    <img src="/assets/images/dashboard/ruby_logo.svg" alt="" />
+  </div>
+
+  <div class="nav-contents">
+    <div class="nav-item" [class.is-active]="isActive('/home')">
+      <img
+        *ngIf="!isActive('/home')"
+        src="assets/images/dashboard/home-inactive-icon.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/home')"
+        src="/assets/images/dashboard/home-active-icon.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/home']">
+        <a>Home</a>
+      </div>
+    </div>
+
+    <div
+      class="nav-item"
+      [class.is-active]="isActive('/fraud-scanner') || isActive('/fraud-scanner')"
+    >
+      <img
+        *ngIf="!(isActive('/fraud-scanner') || isActive('/fraud-scanner'))"
+        src="/assets/images/dashboard/fraud-scanner-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/fraud-scanner') || isActive('/fraud-scanner')"
+        src="/assets/images/dashboard/fraud-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/fraud-scanner']">
+        <a>Fraud Scanner</a>
+      </div>
+    </div>
+
+    <div class="nav-item" routerLinkActive="is-active">
+      <img
+        *ngIf="!isActive('/monitored-event')"
+        src="/assets/images/dashboard/monitored-event-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/monitored-event')"
+        src="/assets/images/dashboard/monitored-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/monitored-event']">
+        <a>Monitored Events</a>
+      </div>
+    </div>
+
+    <div class="nav-item" [class.is-active]="isActive('/rule-mgt')">
+      <img
+        *ngIf="!isActive('/rule-mgt')"
+        src="/assets/images/dashboard/rule-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/rule-mgt')"
+        src="/assets/images/dashboard/rule-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/rule-mgt']">
+        <a>Rules Mgmt.</a>
+      </div>
+    </div>
+
+    <div class="nav-item" [class.is-active]="isActive('/trans-checker')">
+      <img
+        *ngIf="!isActive('/trans-checker')"
+        src="/assets/images/dashboard/checker-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/trans-checker')"
+        src="/assets/images/dashboard/checker-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/trans-checker']">
+        <a>Trans. Checker</a>
+      </div>
+    </div>
+
+    <div class="nav-item" [class.is-active]="isActive('/blacklist')">
+      <img
+        *ngIf="!isActive('/blacklist')"
+        src="/assets/images/dashboard/blacklist-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/blacklist')"
+        src="/assets/images/dashboard/blacklist-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/blacklist']">
+        <a>Blacklist</a>
+      </div>
+    </div>
+
+    <div class="nav-item" [class.is-active]="isActive('/configuration')">
+      <img
+        *ngIf="!isActive('/configuration')"
+        src="/assets/images/dashboard/configuration-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/configuration')"
+        src="/assets/images/dashboard/configuration-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/configuration']">
+        <a>Configuration</a>
+      </div>
+    </div>
+  </div>
+</div>
