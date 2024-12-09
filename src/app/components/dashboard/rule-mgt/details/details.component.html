@@ -1,0 +1,129 @@
+<div class="details">
+  <div class="content">
+    <div class="title">
+      <span><img src="/assets/images/dashboard/rule-icon.svg" alt="" /></span>
+      &nbsp; &nbsp;View Rule
+    </div>
+    <div class="close">
+      <img
+        (click)="closeModal('close')"
+        src="/assets/images/dashboard/close.svg"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="main-container">
+    <div class="rule-details">Static Rule Details</div>
+    <div class="details-content">
+      <div class="details-item">
+        <div class="key">Rule name</div>
+        <div class="value">High Volume in USSD Transactions</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Rule Description</div>
+        <div class="value">
+          Detects USSD transactions that are greater than N10,000
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="details-item">
+        <div class="key">Criteria</div>
+        <div class="criteria-value">
+          :channels: = USSD AND :Amount: > 100,000 AND :currency: = ngn
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="multiple-value">
+        <div class="details-item">
+          <div class="key">Frequency Threshold</div>
+          <div class="value">5 counts</div>
+        </div>
+
+        <div class="details-item">
+          <div class="key">Within Time Window</div>
+          <div class="value">10 minutes</div>
+        </div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Detect based on criteria</div>
+        <div class="value">channels</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="multiple-value">
+        <div class="details-item">
+          <div class="key">Transaction Direction</div>
+          <div class="value">Outward Transaction</div>
+        </div>
+
+        <div class="details-item">
+          <div class="key">Action</div>
+          <div class="value">Delay</div>
+        </div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Alert Customer</div>
+        <div class="value">True</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Alert Type</div>
+        <div class="value">Email, SMS Messaging, Dashboard Alert</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Escalate after 2 occurences to:</div>
+        <div class="value">Manager</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Custom Actions</div>
+        <div class="value">
+          Generate a detailed fraud report and forward to compliance
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <div>
+        <div class="btns">
+          <div>
+            <button type="button" class="outlined-button">
+              <div><img src="/assets/images/rules/delete.svg" alt="" /></div>
+              <div class="action-item">Delete Rule</div>
+            </button>
+          </div>
+          <div>
+            <button type="button" class="outlined-button">
+              <div><img src="/assets/images/rules/edit.svg" alt="" /></div>
+              <div class="action-item">Edit Rule</div>
+            </button>
+          </div>
+        </div>
+        <div class="activateAndDeactivate">
+          <button type="submit" class="action-btn">
+            <div><img src="/assets/images/rules/deactivate.svg" alt="" /></div>
+              <div class="action-item"> Deactivate </div>
+            <span class="flex justify-center">
+              <!-- <mat-spinner
+                        *ngIf="loading"
+                        diameter="21"
+                        class="mat-spinner-color"
+                      ></mat-spinner> -->
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

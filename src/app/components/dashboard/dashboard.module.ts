@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateStaticRuleComponent } from './rule-mgt/create-static-rule/create-static-rule.component';
+import { DetailsComponent } from './rule-mgt/details/details.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CreateStaticRuleComponent } from './rule-mgt/create-static-rule/create-
     BlacklistComponent,
     ConfigurationComponent,
     CreateAndEditEventComponent,
-    CreateStaticRuleComponent
+    CreateStaticRuleComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
