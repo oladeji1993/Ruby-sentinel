@@ -5,7 +5,7 @@
       <!-- <h1>RUBYSentinel</h1> -->
     </div>
     <div class="login-form">
-      <h2>Welcome Back</h2>
+      <h2>Welcome Back <mat-icon>home</mat-icon></h2>
       <p>Enter your credentials to continue.</p>
       <form>
         <div class="form-container">
@@ -22,13 +22,25 @@
                 class="custom-input"
                 type="password"
               />
-
-              <!-- <div class="show_password">
-                <mat-icon
-                  matSuffix
-                  (click)="hide = !hide"
-                  >{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
-              </div> -->
+            </div>
+            <div class="show_password">
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility" : "visibility_off"
+              }}</mat-icon> -->
+              <span class="password-toggle" (click)="hide = !hide">
+                <span *ngIf="!hide"
+                  ><img
+                    width="40%"
+                    src="/assets/images/dashboard/eye-hide-icon.jpeg"
+                    alt=""
+                /></span>
+                <span *ngIf="hide"
+                  ><img
+                    width="53%"
+                    src="/assets/images/dashboard/eye-open-icon.jpeg"
+                    alt=""
+                /></span>
+              </span>
             </div>
             <!-- <mat-error
               class="alert"
@@ -53,7 +65,9 @@
         </div>
 
         <div class="login-btn">
-          <button routerLink="/dashboard" class="app_medium_button">Login</button>
+          <button routerLink="/dashboard" class="app_medium_button">
+            Login
+          </button>
         </div>
       </form>
     </div>

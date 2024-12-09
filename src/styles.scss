@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
 html,
 body {
@@ -39,9 +40,9 @@ body {
       border: 1px solid #e1e1e1;
     }
 
-    // input {
-    //   width: 96%;
-    // }
+    input {
+      width: 95%;
+    }
   }
 
   .show_password {
@@ -83,6 +84,40 @@ body {
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 8px;
+
+  .cancel {
+    width: 174.5px;
+    height: 48px;
+    max-width: 400px;
+    padding: 12px 16px 12px 16px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid rgba(215, 34, 106, 1);
+    color: rgba(215, 34, 106, 1);
+  }
+
+  .action-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 174.5px;
+    height: 48px;
+    max-width: 400px;
+    color: #fff;
+    padding: 12px 16px 12px 16px;
+    border-radius: 16px;
+    background: rgba(215, 34, 106, 1);
+  }
 }
 
 mat-error {

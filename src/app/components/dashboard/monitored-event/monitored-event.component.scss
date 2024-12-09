@@ -136,6 +136,10 @@
         padding: 10px;
         //   background-color: #fff;
         color: rgba(97, 97, 97, 1);
+
+        .more-options{
+            cursor: pointer;
+        }
       }
       // td:first-child {
       //   border-left-style: solid;
@@ -152,5 +156,9 @@
       //   background-color: rgba(249, 250, 252, 1);
       // }
     }
+  }
+
+  .option-item{
+    cursor: pointer  !important;
   }
 }

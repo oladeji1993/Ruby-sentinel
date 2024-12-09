@@ -14,6 +14,11 @@ import { RuleMgtComponent } from './rule-mgt/rule-mgt.component';
 import { TransCheckerComponent } from './trans-checker/trans-checker.component';
 import { BlacklistComponent } from './blacklist/blacklist.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { CreateAndEditEventComponent } from './monitored-event/create-and-edit-event/create-and-edit-event.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateStaticRuleComponent } from './rule-mgt/create-static-rule/create-static-rule.component';
 
 
 @NgModule({
@@ -27,11 +32,17 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     RuleMgtComponent,
     TransCheckerComponent,
     BlacklistComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    CreateAndEditEventComponent,
+    CreateStaticRuleComponent
   ],
   imports: [
     CommonModule,
     MatSidenavModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatInputModule,
     MatMenuModule,
     DashboardRoutingModule
   ]

@@ -1,0 +1,37 @@
+<div class="success">
+  <div class="close">
+    <img
+      (click)="closeModal('close')"
+      src="/assets/images/dashboard/close.svg"
+      alt=""
+    />
+  </div>
+  <div class="content form-container">
+    <div>
+      <div class="title">New Event Added</div>
+
+      <img src="/assets/images/dashboard/success-icon.svg" alt="" />
+      <div>Successfully Added a new event</div>
+
+      <div class="buttons">
+        <!-- <div>
+          <button type="button" (click)="closeModal('close')" class="cancel">
+            Cancel
+          </button>
+        </div> -->
+        <div>
+          <button type="submit"(click)="closeModal('item')"  class="okay_button">
+            <span> Okay </span>
+            <span class="flex justify-center">
+              <!-- <mat-spinner
+                      *ngIf="loading"
+                      diameter="21"
+                      class="mat-spinner-color"
+                    ></mat-spinner> -->
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

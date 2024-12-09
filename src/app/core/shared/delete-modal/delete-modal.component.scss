@@ -1,0 +1,42 @@
+.delete {
+  padding: 1.5rem;
+
+  .close{
+    display: flex;
+    justify-content: end;
+    
+    img{
+        cursor: pointer;
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      text-align: center;
+      color: rgba(12, 21, 73, 1);
+      margin-bottom: 1rem;
+    }
+  }
+
+  .buttons {
+    .delete-btn {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      width: 174.5px;
+      height: 48px;
+      max-width: 400px;
+      color: #fff;
+      padding: 12px 16px 12px 16px;
+      border-radius: 16px;
+      background: rgba(255, 0, 0, 1);
+    }
+  }
+}

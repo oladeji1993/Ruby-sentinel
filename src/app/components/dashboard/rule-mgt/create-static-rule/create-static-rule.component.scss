@@ -1,0 +1,120 @@
+.create-rule {
+  .content {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1.5rem;
+
+    // text-align: center;
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      width: 516px;
+      background-color: rgba(245, 245, 245, 1);
+      padding: 4px 12px 4px 12px;
+      border-radius: 12px;
+    }
+    .close {
+      img {
+        margin-top: 0.5rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .divider {
+    border: 1px solid rgba(222, 226, 230, 1);
+    margin-top: 1rem;
+  }
+
+  .main-container {
+    padding: 1.5rem;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+  }
+
+  .rule-list {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    background-color: rgba(245, 245, 245, 1);
+    padding: 4px 12px 4px 12px;
+    border-radius: 12px;
+  }
+
+  .rule-item {
+    margin-top: 1rem;
+  }
+
+  .add-btn {
+    width: 184px;
+    height: 32px;
+    max-width: 380px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px 0px 0px 0px;
+    margin-top: 10px;
+    border: 1px solid rgba(108, 117, 125, 1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  textarea {
+    border: none;
+    outline: none;
+    border: 1px solid rgba(196, 196, 196, 1);
+    height: 60px;
+    padding: 10px 12px 10px 12px;
+    border-radius: 8px;
+    width: 95%;
+  }
+
+  .btns {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 2rem;
+    text-align: center;
+    gap: 8px;
+
+    .cancel {
+      width: 174.5px;
+      height: 48px;
+      max-width: 400px;
+      padding: 12px 16px 12px 16px;
+      border-radius: 16px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: #fff;
+      border: 1px solid rgba(215, 34, 106, 1);
+      color: rgba(215, 34, 106, 1);
+    }
+
+    .action-btn {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      width: 174.5px;
+      height: 48px;
+      max-width: 400px;
+      color: #fff;
+      padding: 12px 16px 12px 16px;
+      border-radius: 16px;
+      background: rgba(215, 34, 106, 1);
+    }
+  }
+}

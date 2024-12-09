@@ -1,0 +1,59 @@
+<div class="create-rule">
+  <div class="content">
+    <div class="title">
+      <span><img src="/assets/images/dashboard/rule-icon.svg" alt="" /></span>
+      &nbsp; &nbsp;Create New Static Rule Wizard
+    </div>
+    <div class="close">
+      <img  (click)="closeModal('close')" src="/assets/images/dashboard/close.svg" alt="" />
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="main-container">
+    <p>
+      Enter your rule parameters and configurations to setup a new rule for
+      monitoring.
+    </p>
+
+    <div class="rule-list">1. Rules Information</div>
+    <div class="form-container">
+      <div class="input-container">
+        <label class="label"> Rule Name </label>
+        <input matInput class="custom-input form-control" type="text" />
+      </div>
+      <div class="input-container">
+        <label class="label" for="email"> Description </label>
+        <textarea placeholder="Type here" formControlName="description"></textarea>
+      </div>
+
+      <div class="rule-list rule-item">2. Transaction Criteria</div>
+      <div class="add-btn">+ Add Criteria</div>
+    </div>
+
+
+
+    <div class="btns">
+      <div>
+        <button type="button" (click)="closeModal('close')" class="cancel">
+          Cancel
+        </button>
+      </div>
+      <div>
+        <button
+          type="submit"
+          class="action-btn"
+        >
+          <span> Continue </span>
+          <span class="flex justify-center">
+            <!-- <mat-spinner
+                *ngIf="loading"
+                diameter="21"
+                class="mat-spinner-color"
+              ></mat-spinner> -->
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
