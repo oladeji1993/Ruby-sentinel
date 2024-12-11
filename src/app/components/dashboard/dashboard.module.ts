@@ -20,6 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateStaticRuleComponent } from './rule-mgt/create-static-rule/create-static-rule.component';
 import { DetailsComponent } from './rule-mgt/details/details.component';
+import { CreateEditConfigurationComponent } from './configuration/create-edit-configuration/create-edit-configuration.component';
+import { CreateEditBlacklistComponent } from './blacklist/create-edit-blacklist/create-edit-blacklist.component';
+import { RecvPairsComponent } from './recv-pairs/recv-pairs.component';
+import { CreateEditSendRecPairComponent } from './recv-pairs/create-edit-send-rec-pair/create-edit-send-rec-pair.component';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { DetailsComponent } from './rule-mgt/details/details.component';
     ConfigurationComponent,
     CreateAndEditEventComponent,
     CreateStaticRuleComponent,
-    DetailsComponent
+    DetailsComponent,
+    CreateEditConfigurationComponent,
+    CreateEditBlacklistComponent,
+    RecvPairsComponent,
+    CreateEditSendRecPairComponent
   ],
   imports: [
     CommonModule,

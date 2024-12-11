@@ -1,40 +1,38 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SuccessModalComponent } from 'src/app/core/shared/success-modal/success-modal.component';
 
 @Component({
-  selector: 'app-create-and-edit-event',
-  templateUrl: './create-and-edit-event.component.html',
-  styleUrls: ['./create-and-edit-event.component.scss'],
+  selector: 'app-create-edit-configuration',
+  templateUrl: './create-edit-configuration.component.html',
+  styleUrls: ['./create-edit-configuration.component.scss']
 })
-export class CreateAndEditEventComponent implements OnInit {
-  eventForm!: FormGroup;
+export class CreateEditConfigurationComponent {
+  channelForm!: FormGroup;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private dialogRef: MatDialogRef<CreateAndEditEventComponent>
+    private dialogRef: MatDialogRef<CreateEditConfigurationComponent>
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        eventCategory: this.data.data?.category,
-        eventName: this.data.data?.event,
-        eventTitle: this.data.data?.title,
+        channelName: this.data.data?.channelName,
+        channelCode: this.data.data?.channelCode,
         description: this.data.data?.description,
       };
-      this.eventForm.patchValue(matchedPayload);
+      this.channelForm.patchValue(matchedPayload);
     }
   }
 
   initializeForm() {
-    this.eventForm = this.fb.group({
-      eventCategory: [''],
-      eventName: [''],
-      eventTitle: [''],
+    this.channelForm = this.fb.group({
+      channelName: [''],
+      channelCode: [''],
       description: [''],
     });
   }
@@ -52,12 +50,12 @@ export class CreateAndEditEventComponent implements OnInit {
     this.closeModal('close')
     let dialogRef = this.dialog.open(SuccessModalComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      data: { actionType: 'Event', data: item },
-      // data: { actionType: item == 'Create' ? 'Create' : 'Edit', data: item != 'Create' ? item : '' },
+      data: { actionType: 'Channel', data: item },
       width: '440px',
       height: 'auto',
       disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
   }
+
 }

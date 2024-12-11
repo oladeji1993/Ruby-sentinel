@@ -1,8 +1,9 @@
-#configuration {
+#blacklist {
   .header {
     padding: 0.5rem 1rem;
     display: flex;
     padding-bottom: 1.5rem;
+    // justify-content: center;
     gap: 1rem;
     border-bottom: 1px solid rgba(224, 224, 224, 1);
 
@@ -71,7 +72,7 @@
   .main-container {
     background-color: #ebebeb;
     height: 100vh;
-    padding: 0.8rem;
+    padding: 1rem;
 
     .content {
       .table-container {
@@ -138,7 +139,7 @@
           //   background-color: #fff;
           color: rgba(97, 97, 97, 1);
 
-          img{
+          img {
             cursor: pointer;
           }
         }

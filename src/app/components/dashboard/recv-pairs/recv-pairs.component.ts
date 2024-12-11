@@ -1,44 +1,44 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateEditBlacklistComponent } from './create-edit-blacklist/create-edit-blacklist.component';
 import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-modal.component';
+import { CreateEditSendRecPairComponent } from './create-edit-send-rec-pair/create-edit-send-rec-pair.component';
 
 @Component({
-  selector: 'app-blacklist',
-  templateUrl: './blacklist.component.html',
-  styleUrls: ['./blacklist.component.scss']
+  selector: 'app-recv-pairs',
+  templateUrl: './recv-pairs.component.html',
+  styleUrls: ['./recv-pairs.component.scss']
 })
-export class BlacklistComponent {
+export class RecvPairsComponent {
   constructor(private dialog: MatDialog) {}
 
   items = [
     {
-      name: 'OneBank Mobile',
-      type: 'channel',
+      senderAccount: '0012345678 ',
+      recepientAccount: '0012345678',
       code: '123',
       description: '--',
       createdBy: 'Ruby Olawole',
       date: '25/12/2024 - 13:00',
     },
     {
-      name: 'OneBank Mobile',
-      type: 'channel',
+      senderAccount: '0012345678',
+      recepientAccount: '0012345678',
       code: '123',
       description: '--',
       createdBy: 'Ruby Olawole',
       date: '25/12/2024 - 13:00',
     },
     {
-      name: 'monie point',
-      type: 'channel',
+      senderAccount: '0012345678',
+      recepientAccount: '0012345678',
       code: '123',
       description: '--',
       createdBy: 'Ruby Olawole',
       date: '25/12/2024 - 13:00',
     },
     {
-      name: 'OneBank Mobile',
-      type: 'channel',
+      senderAccount: '0012345678 ',
+      recepientAccount: '0012345678',
       code: '123',
       description: '--',
       createdBy: 'Ruby Olawole',
@@ -48,20 +48,19 @@ export class BlacklistComponent {
 
 
   createAndEdit(item: any) {
-    let dialogRef = this.dialog.open(CreateEditBlacklistComponent, {
+    let dialogRef = this.dialog.open(CreateEditSendRecPairComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
       data: { actionType: item == 'Create' ? 'Create' : 'Edit', data: item != 'Create' ? item : '' },
       width: '440px',
       height: 'auto',
       disableClose: true
     });
-    // dialogRef.afterClosed().subscribe(() => {});
   }
 
   deleteModal(item: any) {
     let dialogRef = this.dialog.open(DeleteModalComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      data: { actionType: 'blacklist', data: item },
+      data: { actionType: 'sender/rece pair', data: item },
       width: '440px',
       height: 'auto',
       disableClose: true

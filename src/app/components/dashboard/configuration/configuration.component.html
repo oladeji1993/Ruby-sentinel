@@ -9,8 +9,9 @@
       <div class="filter-dropdown">
         <div class="input-container">
           <select formControlName="apiType" style="width: 100%">
-            <option>Currency</option>
-            <option>Timed event</option>
+          <option></option>
+            <option>Channel</option>
+            <option>Bank</option>
           </select>
         </div>
       </div>
@@ -23,7 +24,7 @@
         />
       </div>
       <div>
-        <button>+ Create New</button>
+        <button (click)="createAndEdit('Create')">+ Create New</button>
       </div>
     </div>
     <div class="filter-input">
@@ -64,16 +65,16 @@
                       </div> -->
               <ng-container *ngFor="let item of items">
                 <tr>
-                  <td>{{ item.currencyName }}</td>
+                  <td>{{ item.channelName }}</td>
                   <td>
-                    <span>{{ item.currencyCode }}</span>
+                    <span>{{ item.channelCode }}</span>
                   </td>
-                  <td>{{ item.Description }}</td>
+                  <td>{{ item.description }}</td>
                   <td>
-                    <img src="/assets/images/dashboard/edit.svg" alt="" />
+                    <img (click)="createAndEdit(item)" src="/assets/images/dashboard/edit.svg" alt="" />
                   </td>
                   <td>
-                    <img src="/assets/images/dashboard/delete.svg" alt="" />
+                    <img (click)="deleteModal(item)" src="/assets/images/dashboard/delete.svg" alt="" />
                   </td>
                 </tr>
               </ng-container>

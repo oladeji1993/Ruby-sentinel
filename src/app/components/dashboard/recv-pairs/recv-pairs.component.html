@@ -1,6 +1,6 @@
 <div id="blacklist">
   <div class="header">
-    <div class="tab-name">BlackList</div>
+    <div class="tab-name">Allow Sender/Receiver Pairs</div>
   </div>
 
   <div class="filter-container">
@@ -28,16 +28,16 @@
     </div>
     <div class="filter-input">
       <!-- <div class="form-container input-container">
-        <input
-          matInput
-          placeholder="Search from table"
-          class="custom-input form-control"
-          type="text"
-        />
-      </div>
-      <div>
-        <button>+ Add New Event</button>
-      </div> -->
+          <input
+            matInput
+            placeholder="Search from table"
+            class="custom-input form-control"
+            type="text"
+          />
+        </div>
+        <div>
+          <button>+ Add New Event</button>
+        </div> -->
     </div>
   </div>
 
@@ -48,8 +48,8 @@
           <table>
             <thead>
               <tr>
-                <td>Item Name</td>
-                <td>Type</td>
+                <td>Sender Account</td>
+                <td>Recepient Account</td>
                 <td>Code</td>
                 <td>Description</td>
                 <td>Added By</td>
@@ -60,16 +60,16 @@
             </thead>
             <tbody>
               <!-- <div
-                      class="no-record"
-                      *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                    >
-                      No record Found
-                    </div> -->
+                        class="no-record"
+                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                      >
+                        No record Found
+                      </div> -->
               <ng-container *ngFor="let item of items">
                 <tr>
-                  <td>{{ item.name }}</td>
+                  <td>{{ item.senderAccount }}</td>
                   <td>
-                    <span>{{ item.type }}</span>
+                    <span>{{ item.recepientAccount }}</span>
                   </td>
                   <td>
                     <span>{{ item.code }}</span>
@@ -85,7 +85,11 @@
                     />
                   </td>
                   <td>
-                    <img (click)="deleteModal(item)" src="/assets/images/dashboard/delete.svg" alt="" />
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
                   </td>
                 </tr>
               </ng-container>

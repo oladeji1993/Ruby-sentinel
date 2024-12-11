@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-modal',
@@ -7,7 +7,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./delete-modal.component.scss'],
 })
 export class DeleteModalComponent {
-  constructor(private dialogRef: MatDialogRef<DeleteModalComponent>){};
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<DeleteModalComponent>){};
 
   closeModal(item: any) {
     document

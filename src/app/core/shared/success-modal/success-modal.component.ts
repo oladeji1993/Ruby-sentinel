@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-success-modal',
@@ -7,7 +7,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./success-modal.component.scss']
 })
 export class SuccessModalComponent {
-  constructor(private dialogRef: MatDialogRef<SuccessModalComponent>){};
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<SuccessModalComponent>
+  ){};
 
   closeModal(item: any) {
     document

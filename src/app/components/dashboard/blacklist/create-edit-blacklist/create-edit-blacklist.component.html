@@ -1,0 +1,131 @@
+<div class="modal">
+  <div class="close">
+    <img
+      (click)="closeModal('close')"
+      src="/assets/images/dashboard/close.svg"
+      alt=""
+    />
+  </div>
+  <div class="header">
+    {{ data.actionType == "Create" ? "Add New" : "Edit" }} BlackList Item
+  </div>
+  <div class="sub-header">
+    Please fill in the details to
+    {{ data.actionType == "Create" ? "add a new" : "edit" }} item.
+  </div>
+
+  <form [formGroup]="eventForm">
+    <div class="form-container">
+      <div class="input-container">
+        <label class="label" for="email"> Item Type </label>
+        <select (change)="selectedItem($event)" formControlName="eventCategory">
+          <option value="banks">Banks</option>
+          <option value="accounts">Accounts</option>
+          <option value="bvn">(BVN) Bank Verification Number</option>
+          <option value="currency">Currency</option>
+          <option value="channels">Channels</option>
+          <option value="transaction-type">Transaction Types</option>
+        </select>
+      </div>
+
+      <div *ngIf="selectedItemType === 'banks'" class="input-container">
+        <label class="label" for="email"> Bank Code </label>
+        <input
+          formControlName="eventName"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div *ngIf="selectedItemType === 'accounts'" class="input-container">
+        <label class="label" for="email"> Account Number </label>
+        <input
+          formControlName="eventTitle"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div *ngIf="selectedItemType === 'bvn'" class="input-container">
+        <label class="label" for="email"> BVN </label>
+        <input
+          formControlName="eventTitle"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div *ngIf="selectedItemType === 'banks'" class="input-container">
+        <label class="label" for="email"> Select Bank </label>
+        <select formControlName="eventCategory">
+          <option value="banks">Access Bank</option>
+          <option value="accounts">UBA</option>
+          <option value="bvn">Sterling Bank</option>
+        </select>
+      </div>
+
+      <div
+        *ngIf="
+          selectedItemType === 'banks' ||
+          selectedItemType === 'accounts' ||
+          selectedItemType === 'bvn'
+        "
+        class="input-container"
+      >
+        <label class="label" for="email"> Item Name </label>
+        <input
+          formControlName="eventTitle"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div
+        *ngIf="
+          selectedItemType === 'banks' ||
+          selectedItemType === 'accounts' ||
+          selectedItemType === 'bvn'
+        "
+        class="input-container"
+      >
+        <label class="label" for="email"> Description </label>
+        <textarea
+          formControlName="description"
+          name=""
+          rows="10"
+          cols="50"
+        ></textarea>
+      </div>
+
+      <div class="buttons">
+        <div>
+          <button type="button" (click)="closeModal('close')" class="cancel">
+            Cancel
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="createEvent('create')"
+            type="submit"
+            class="action-btn"
+          >
+            <span
+              >{{ data.actionType == "Create" ? "Create" : "Update" }}
+            </span>
+            <span class="flex justify-center">
+              <!-- <mat-spinner
+                  *ngIf="loading"
+                  diameter="21"
+                  class="mat-spinner-color"
+                ></mat-spinner> -->
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

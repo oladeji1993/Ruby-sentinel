@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAndEditEventComponent } from './create-and-edit-event/create-and-edit-event.component';
 import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-modal.component';
@@ -9,7 +9,8 @@ import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-mo
   styleUrls: ['./monitored-event.component.scss'],
 })
 export class MonitoredEventComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog) {}
   events = [
     {
       title: 'Change of Password',
@@ -114,7 +115,7 @@ export class MonitoredEventComponent {
   deleteModal(item: any) {
     let dialogRef = this.dialog.open(DeleteModalComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      // data: { actionType: item == 'Create' ? 'Create' : 'Edit', data: item != 'Create' ? item : '' },
+      data: { actionType: 'event', data: item },
       width: '440px',
       height: 'auto',
       disableClose: true

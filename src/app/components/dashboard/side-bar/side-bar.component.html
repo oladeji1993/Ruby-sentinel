@@ -103,6 +103,23 @@
       </div>
     </div>
 
+
+    <div class="nav-item" [class.is-active]="isActive('/Send-Recv-Pairs')">
+      <img
+        *ngIf="!isActive('/Send-Recv-Pairs')"
+        src="/assets/images/send-recieve-pair/inactive-icon.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/Send-Recv-Pairs')"
+        src="/assets/images/send-recieve-pair/active-icon.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/Send-Recv-Pairs']">
+        <a>Send/Recv. Pairs</a>
+      </div>
+    </div>
+
     <div class="nav-item" [class.is-active]="isActive('/configuration')">
       <img
         *ngIf="!isActive('/configuration')"

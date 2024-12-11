@@ -8,6 +8,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { MonitoredEventComponent } from './monitored-event/monitored-event.component';
 import { RuleMgtComponent } from './rule-mgt/rule-mgt.component';
 import { TransCheckerComponent } from './trans-checker/trans-checker.component';
+import { RecvPairsComponent } from './recv-pairs/recv-pairs.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
       {
         path: 'trans-checker',
         component: TransCheckerComponent,
+      },
+
+      {
+        path: 'Send-Recv-Pairs',
+        component: RecvPairsComponent,
       },
     ]
   }
