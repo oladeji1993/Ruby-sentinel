@@ -1,0 +1,89 @@
+<div id="setting">
+  <div class="header">
+    <div class="tab-name">Settings</div>
+  </div>
+
+  <div class="filter-container">
+    <div class="filter-btns">
+      <div class="detected">User Management</div>
+      <!-- <div>Event Based Rules</div> -->
+    </div>
+    <div class="filter-input">
+      <div class="form-container input-container">
+        <!-- <input
+            matInput
+            placeholder="Searh"
+            class="custom-input form-control"
+            type="text"
+          /> -->
+      </div>
+      <div class="create-icon">
+        <button (click)="addUser('Create')">+ Add New User</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="content">
+      <div class="table-container">
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <td>User Name</td>
+                <td>Email</td>
+                <td>Role</td>
+                <td>Profiled By:</td>
+                <td>Status</td>
+                <td>Date Created</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <div
+                            class="no-record"
+                            *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                          >
+                            No record Found
+                          </div> -->
+              <ng-container *ngFor="let item of items">
+                <tr>
+                  <td>{{ item.userName }}</td>
+                  <td>
+                    <span>{{ item.email }}</span>
+                  </td>
+                  <td>
+                    <span>{{ item.role }}</span>
+                  </td>
+                  <td>{{ item.profild_by }}</td>
+                  <td>{{ item.Status }}</td>
+                  <td>{{ item.date }}</td>
+                  <td>
+                    <span class="action" [matMenuTriggerFor]="nav">...</span>
+                  </td>
+                </tr>
+                <mat-menu class="menu-tray" #nav="matMenu">
+                  <div style="margin-top: 1rem" class="mat-menu-item">
+                    <a (click)="deleteModal(item)" style="cursor: pointer"
+                      >Delete User &nbsp; &nbsp; &nbsp;&nbsp;<img
+                        src="/assets/images/dashboard/delete.svg"
+                        alt=""
+                    /></a>
+                  </div>
+
+                  <div style="margin-top: 0.7rem;" class="mat-menu-item">
+                    <a style="cursor: pointer"
+                      >Disable User &nbsp; &nbsp; &nbsp;<img
+                        src="/assets/images/dashboard/close.svg"
+                        alt=""
+                    /></a>
+                  </div>
+                </mat-menu>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

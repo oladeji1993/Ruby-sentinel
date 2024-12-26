@@ -31,6 +31,8 @@ import { ReleaseTransactionComponent } from './fraud-scanner/release-transaction
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { RequestApprovalComponent } from './request-approval/request-approval.component';
 import { RequestDetailsComponent } from './request-approval/request-details/request-details.component';
+import { SettingsComponent } from './header/settings/settings.component';
+import { AddUserComponent } from './header/settings/add-user/add-user.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { RequestDetailsComponent } from './request-approval/request-details/requ
     AccountBreachesComponent,
     ReleaseTransactionComponent,
     RequestApprovalComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    SettingsComponent,
+    AddUserComponent
   ],
   imports: [
     CommonModule,

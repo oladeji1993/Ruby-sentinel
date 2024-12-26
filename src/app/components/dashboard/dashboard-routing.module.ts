@@ -13,6 +13,7 @@ import { AccountBreachesComponent } from './fraud-scanner/account-breaches/accou
 import { TransactionDetailsComponent } from './fraud-scanner/transaction-details/transaction-details.component';
 import { TransactionSummaryComponent } from './trans-checker/transaction-details/transaction-details.component';
 import { RequestApprovalComponent } from './request-approval/request-approval.component';
+import { SettingsComponent } from './header/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
       {
         path: 'request-approval',
         component: RequestApprovalComponent,
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
       },
     ]
   }

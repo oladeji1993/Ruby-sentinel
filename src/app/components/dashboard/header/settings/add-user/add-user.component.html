@@ -1,0 +1,76 @@
+<div class="modal">
+  <div class="close">
+    <img
+      (click)="closeModal('close')"
+      src="/assets/images/dashboard/close.svg"
+      alt=""
+    />
+  </div>
+  <div class="header">
+    {{ data.actionType == "Create" ? "Add New" : "Edit" }} User
+  </div>
+  <div class="sub-header">
+    Please fill in the details to
+    {{ data.actionType == "Create" ? "add" : "edit" }} a new user.
+  </div>
+
+  <form [formGroup]="eventForm">
+    <div class="form-container">
+      <div class="input-container">
+        <label class="label" for="email"> User Email </label>
+        <input
+          formControlName="email"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div class="input-container">
+        <label class="label" for="email"> User Name </label>
+        <input
+          formControlName="userName"
+          matInput
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+
+      <div class="input-container">
+        <label class="label" for="email"> Role </label>
+        <select formControlName="role">
+          <option value=""></option>
+          <option value="user">User</option>
+          <option value="Admin">Admin</option>
+          <option value="Superadmin">Superadmin</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <div>
+          <button type="button" (click)="closeModal('close')" class="cancel">
+            Cancel
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="createUser('create')"
+            type="submit"
+            class="action-btn"
+          >
+            <span
+              >{{ data.actionType == "Create" ? "Create" : "Update" }}
+            </span>
+            <span class="flex justify-center">
+              <!-- <mat-spinner
+                  *ngIf="loading"
+                  diameter="21"
+                  class="mat-spinner-color"
+                ></mat-spinner> -->
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

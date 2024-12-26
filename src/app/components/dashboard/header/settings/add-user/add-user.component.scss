@@ -1,0 +1,37 @@
+.modal {
+  padding: 1rem;
+
+  .close {
+    display: flex;
+    justify-content: end;
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .header {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: left;
+    color: rgba(12, 21, 73, 1);
+  }
+
+  .sub-header {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-top: 0.8rem;
+  }
+
+  textarea {
+    border: none;
+    outline: none;
+    border: 1px solid rgba(196, 196, 196, 1);
+    height: 100px;
+    padding: 10px 12px 10px 12px;
+    border-radius: 8px;
+  }
+}

@@ -14,4 +14,10 @@ export class HeaderComponent {
   logOut(){
     this.router.navigate(['/login'])
   }
+
+
+  settings(){
+    this.router.navigate(['/dashboard/settings'])
+
+  }
 }

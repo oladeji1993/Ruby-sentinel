@@ -25,9 +25,21 @@
       </div>
     </div>
   </div>
-  <mat-menu class="menu-tray" #nav="matMenu">
+  <mat-menu class="menu-tray" #nav="matMenu">    
     <div class="mat-menu-item">
-      <a (click)="logOut()">Logout</a>
+      <a (click)="logOut()" style="cursor: pointer"
+        >Logout &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img
+          src="/assets/images/dashboard/logout.svg"
+          alt=""
+      /></a>
+    </div>
+
+    <div style="margin-top: 0.7rem;" class="mat-menu-item">
+      <a (click)="settings()" style="cursor: pointer;"
+        >Settings &nbsp; &nbsp; &nbsp; &nbsp;<img
+          src="/assets/images/dashboard/setting.svg"
+          alt=""
+      /></a>
     </div>
   </mat-menu>
 </div>

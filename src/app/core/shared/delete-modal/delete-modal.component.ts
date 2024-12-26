@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,10 +6,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './delete-modal.component.html',
   styleUrls: ['./delete-modal.component.scss'],
 })
-export class DeleteModalComponent {
+export class DeleteModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DeleteModalComponent>){};
+
+    ngOnInit(): void {
+    }
 
   closeModal(item: any) {
     document
