@@ -2,17 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-fraud-scanner',
-  templateUrl: './fraud-scanner.component.html',
-  styleUrls: ['./fraud-scanner.component.scss']
+  selector: 'app-account-breaches',
+  templateUrl: './account-breaches.component.html',
+  styleUrls: ['./account-breaches.component.scss']
 })
-export class FraudScannerComponent {
+export class AccountBreachesComponent {
 
   constructor(private router: Router){}
-  
+
   showDetails(){
     this.router.navigate(['/dashboard/fraud-scanner/transaction-details'])
   }
-
 
 }

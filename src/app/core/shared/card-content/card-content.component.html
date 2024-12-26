@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="content">
+    <div class="header">{{cardContent?.cardName}}</div>
+    <div class="items">
+        <div *ngFor="let key of getKeys(cardContent)" class="item-1">
+            <div class="item-title">{{ formatKey(key) }}</div>
+            <div class="item-value">{{ cardContent[key] }}</div>
+        </div>
+    </div>
+  </div>
+</div>

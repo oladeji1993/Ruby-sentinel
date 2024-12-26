@@ -1,0 +1,121 @@
+<div id="details">
+  <div class="header">
+    <div class="tab-name">
+      <span (click)="back()" class="back">< Back</span> &nbsp; Transaction
+      Details
+    </div>
+  </div>
+
+  <div class="filter-container">
+    <div class="inner-filter">
+      <div class="view"></div>
+    </div>
+    <div class="filter-input">
+      <div class="form-container input-container">
+        <button (click)="releaseTransaction()">Release Transaction</button>
+      </div>
+      <div class="bg-btn">
+        <button>Flag As Fraud</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="content">
+      <div class="content-item-1">
+        <div class="card-header">
+          <div class="close-transaction">
+            <img src="/assets/images/dashboard/card-close-icon.svg" alt="" />
+          </div>
+          <div class="title">Transaction Analysis Report</div>
+        </div>
+        <div class="sub-content">
+          <div class="content">
+            <div class="inner-item">
+              <div>
+                <img
+                  src="/assets/images/dashboard/transaction-icon.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <div class="rate">91%</div>
+                <div class="risk">High Priority Risk Score</div>
+              </div>
+            </div>
+            <div class="inner-item">
+              <div>
+                <img src="/assets/images/dashboard/currency-icon.svg" alt="" />
+              </div>
+              <div>
+                <div class="rate">NGN 12,000,000.00</div>
+                <div class="risk">Amount in question</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-card-content [cardContent]="data"></app-card-content>
+        <app-card-content [cardContent]="destinationData"></app-card-content>
+      </div>
+
+      <div class="content-item-2">
+        <div class="title">Rules Information</div>
+        <div class="sub-content">
+          <div>
+            <img src="/assets/images/dashboard/rules.svg" alt="" />
+          </div>
+          <div>
+            <div class="rate">2</div>
+            <div class="risk">Rules Triggered</div>
+          </div>
+        </div>
+        <div class="conatiner-container">
+          <div class="details-content">
+            <div class="details-item">
+              <div class="key">Rule 1 name</div>
+              <div class="value">High Volume in USSD Transactions</div>
+            </div>
+
+            <div class="details-item">
+              <div class="key">Rule Description</div>
+              <!-- <div class="value">
+                Detects USSD transactions that are greater than N10,000
+              </div> -->
+            </div>
+            <div class="details-item">
+              <div class="key">Criteria</div>
+              <div class="criteria-value">
+                :currency: = usd AND :amount: > 10,000 AND :to_bank: =
+                Moniepoint_MFB_(1022203041) AND :payment_type: = transfer
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="item-2">
+              <div class="details-item">
+                <div class="key">Rule 1 name</div>
+                <div class="value">High Volume in USSD Transactions</div>
+              </div>
+
+              <div class="details-item">
+                <div class="key">Rule Description</div>
+                <!-- <div class="value">
+                  Detects USSD transactions that are greater than N10,000
+                </div> -->
+              </div>
+              <div class="details-item">
+                <div class="key">Criteria</div>
+                <div class="criteria-value">
+                  :currency: = ngn AND :amount: ≥ 100,000 AND :to_bank: =
+                  Moniepoint_MFB_(1022203041) AND :payment_type: = transfer AND
+                  :time_of_day: = 00:30 - 04:30
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

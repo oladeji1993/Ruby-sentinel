@@ -103,4 +103,37 @@
     //   padding-left:10px
     // }
   }
+
+  .submenu {
+    padding-left: 3.5rem;
+    // background-color: #f5f5f5;
+  }
+
+  .menu-active {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .submenu-item {
+    padding: 8px 10px;
+    width: 120px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  // .submenu-item:hover {
+  //   background-color: #e8e8e8;
+  // }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  // .arrow.open {
+  //   transform: rotate(180deg);
+  // }
 }

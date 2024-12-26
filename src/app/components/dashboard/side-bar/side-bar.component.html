@@ -21,8 +21,11 @@
     </div>
 
     <div
+      (click)="toggleMenu('fraudScan')"
       class="nav-item"
-      [class.is-active]="isActive('/fraud-scanner') || isActive('/fraud-scanner')"
+      [class.is-active]="
+        isActive('/fraud-scanner') || isActive('/fraud-scanner')
+      "
     >
       <img
         *ngIf="!(isActive('/fraud-scanner') || isActive('/fraud-scanner'))"
@@ -34,8 +37,21 @@
         src="/assets/images/dashboard/fraud-active.svg"
         alt=""
       />
-      <div class="nav-title" [routerLink]="['/dashboard/fraud-scanner']">
+      <div class="nav-title" [routerLink]="['/dashboard/fraud-scanner/suspected-transaction']">
         <a>Fraud Scanner</a>
+        <span class="arrow" [class.open]="isActive('/fraud-scanner')"><img src="/assets/images/dashboard/arrow-up.svg" alt=""></span>
+      </div>
+    </div>
+    <div *ngIf="menus.fraudScan === true" class="submenu">
+      <div [routerLink]="['/dashboard/fraud-scanner/suspected-transaction']" [ngClass]="isActive('/fraud-scanner/suspected-transaction') ? 'menu-active' : isActive('/fraud-scanner/transaction-details') ? 'menu-active' : ''" class="submenu-item">
+        <div *ngIf="isActive('/fraud-scanner/suspected-transaction')"><img src="/assets/images/dashboard/suspected-transaction.svg" alt=""></div>
+        <div *ngIf="!isActive('/fraud-scanner/suspected-transaction')"><img src="/assets/images/dashboard/suspected-trans-inactive.svg" alt=""></div>
+        <div>Suspected Transactions</div>
+      </div>
+      <div [routerLink]="['/dashboard/fraud-scanner/account-breaches']" [ngClass]="isActive('/fraud-scanner/account-breaches') ? 'menu-active' : ''" class="submenu-item">
+        <div *ngIf="!isActive('/fraud-scanner/account-breaches')"><img src="/assets/images/dashboard/account-breaches.svg" alt=""></div>
+        <div *ngIf="isActive('/fraud-scanner/account-breaches')"><img src="/assets/images/dashboard/breached-transaction-active.svg" alt=""></div>
+        <div>Account Breaches</div>
       </div>
     </div>
 
@@ -102,7 +118,6 @@
         <a>Blacklist</a>
       </div>
     </div>
-
 
     <div class="nav-item" [class.is-active]="isActive('/Send-Recv-Pairs')">
       <img

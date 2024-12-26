@@ -1,0 +1,128 @@
+<div id="fraud-scanner">
+  <div class="header">
+    <div class="tab-name">Account Breaches</div>
+    <div class="last-updated">Last updated 30 seconds ago</div>
+  </div>
+
+  <div class="filter-container">
+    <div class="filter-btns">
+      <div class="detected">All Breaches</div>
+      <!-- <div>Fraudulent</div>
+      <div>False Positives</div> -->
+    </div>
+    <div class="filter-input">
+      <div class="input-container">
+        <!-- <label class="label" for="email"> Api Type </label> -->
+        <select style="width: 100%">
+          <option>All Priorites</option>
+          <option>Part Priorites</option>
+        </select>
+      </div>
+
+      <div class="form-container input-container">
+        <input
+          matInput
+          placeholder="Search from table"
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="table-container">
+      <div class="content">
+        <div class="detected-transaction">
+          <div class="table-header">Active Account Breaches</div>
+          <div style="overflow-x: auto">
+            <table>
+              <thead>
+                <tr>
+                  <td>
+                   S...
+                  </td>
+                  <td>Account Name</td>
+                  <td>Acc. Number</td>
+                  <td>Channel/s</td>
+                  <td>Location</td>
+                  <td>Date and Time</td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <div
+                  class="no-record"
+                  *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                >
+                  No record Found
+                </div> -->
+                <ng-container>
+                  <tr (click)="showDetails()">
+                    <td>
+                        1
+                    </td>
+                    <td>Jack Samuel...</td>
+                    <td>0012345678</td>
+                    <td>Altbank,USSD</td>
+                    <td>Lagos</td>
+                    <td>12/08/2023....</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      2
+                    </td>
+                    <td>Jack Samuel...</td>
+                    <td>0012345678</td>
+                    <td>Altpro</td>
+                    <td>Ogun</td>
+                    <td>12/08/2023....</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- <div class="account-breaches">
+            <div class="table-header">Active Account Breaches</div>
+            <div style="overflow-x: auto">
+              <table>
+                <thead>
+                  <tr>
+                    <td>S/N</td>
+                    <td>Account N..</td>
+                    <td>Acc. Num...</td>
+                    <td>Channel/s</td>
+                    <td>Location</td>
+                    <td>Date...</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container>
+                    <tr>
+                      <td>1</td>
+                      <td>Jack Samuel...</td>
+                      <td>001255...</td>
+                      <td>Altbank...</td>
+                      <td>Lagos</td>
+                      <td>12/08/2023...</td>
+                    </tr>
+  
+                    <tr>
+                      <td>2</td>
+                      <td>Alde John...</td>
+                      <td>001255...</td>
+                      <td>OneBank...</td>
+                      <td>Lagos</td>
+                      <td>12/08/2023...</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>

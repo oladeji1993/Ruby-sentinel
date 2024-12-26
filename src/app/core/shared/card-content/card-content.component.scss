@@ -1,0 +1,55 @@
+.container {
+  border: 1px solid rgba(222, 226, 230, 1);
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 20px;
+
+  .content {
+    .header {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      text-align: left;
+      background-color: rgba(245, 245, 245, 1);
+      padding: 3px 14px;
+    }
+
+    .items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 5px 14px;
+      position: relative;
+
+      .item-1 {
+        display: flex;
+        gap: 1rem;
+        position: relative;
+        padding-top: 15px;
+
+        .item-title {
+          color: rgba(97, 97, 97, 1);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          text-align: left;
+        }
+
+        .item-value {
+          color: rgba(33, 37, 41, 1);
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 20px;
+          text-align: left;
+          position: absolute;
+          padding-left: 10rem;
+        //   right: ;
+        //   top: 0;
+        }
+      }
+      //   .item-2 {
+      //     display: flex;
+      //     gap: 1rem;
+      //   }
+    }
+  }
+}

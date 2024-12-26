@@ -24,6 +24,10 @@ import { CreateEditConfigurationComponent } from './configuration/create-edit-co
 import { CreateEditBlacklistComponent } from './blacklist/create-edit-blacklist/create-edit-blacklist.component';
 import { RecvPairsComponent } from './recv-pairs/recv-pairs.component';
 import { CreateEditSendRecPairComponent } from './recv-pairs/create-edit-send-rec-pair/create-edit-send-rec-pair.component';
+import { AccountBreachesComponent } from './fraud-scanner/account-breaches/account-breaches.component';
+import { TransactionDetailsComponent } from './fraud-scanner/transaction-details/transaction-details.component';
+import { CardContentComponent } from 'src/app/core/shared/card-content/card-content.component';
+import { ReleaseTransactionComponent } from './fraud-scanner/release-transaction/release-transaction.component';
 
 
 @NgModule({
@@ -44,7 +48,11 @@ import { CreateEditSendRecPairComponent } from './recv-pairs/create-edit-send-re
     CreateEditConfigurationComponent,
     CreateEditBlacklistComponent,
     RecvPairsComponent,
-    CreateEditSendRecPairComponent
+    CreateEditSendRecPairComponent,
+    AccountBreachesComponent,
+    CardContentComponent,
+    TransactionDetailsComponent,
+    ReleaseTransactionComponent
   ],
   imports: [
     CommonModule,

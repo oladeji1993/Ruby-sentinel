@@ -9,6 +9,8 @@ import { MonitoredEventComponent } from './monitored-event/monitored-event.compo
 import { RuleMgtComponent } from './rule-mgt/rule-mgt.component';
 import { TransCheckerComponent } from './trans-checker/trans-checker.component';
 import { RecvPairsComponent } from './recv-pairs/recv-pairs.component';
+import { AccountBreachesComponent } from './fraud-scanner/account-breaches/account-breaches.component';
+import { TransactionDetailsComponent } from './fraud-scanner/transaction-details/transaction-details.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,16 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'fraud-scanner',
+        path: 'fraud-scanner/suspected-transaction',
         component: FraudScannerComponent,
+      },
+      {
+        path: 'fraud-scanner/transaction-details',
+        component: TransactionDetailsComponent,
+      },
+      {
+        path: 'fraud-scanner/account-breaches',
+        component: AccountBreachesComponent,
       },
       {
         path: 'blacklist',

@@ -1,6 +1,6 @@
 <div id="fraud-scanner">
   <div class="header">
-    <div class="tab-name">Real Time Fraud Scanner</div>
+    <div class="tab-name">Suspected Transactions</div>
     <div class="last-updated">Last updated 30 seconds ago</div>
   </div>
 
@@ -13,7 +13,7 @@
     <div class="filter-input">
       <div class="input-container">
         <!-- <label class="label" for="email"> Api Type </label> -->
-        <select formControlName="apiType" style="width: 100%">
+        <select style="width: 100%">
           <option>All Priorites</option>
           <option>Part Priorites</option>
         </select>
@@ -34,7 +34,7 @@
     <div class="table-container">
       <div class="content">
         <div class="detected-transaction">
-          <div class="table-header">Detected Transactions</div>
+          <div class="table-header">Suspected Transactions</div>
           <div style="overflow-x: auto">
             <table>
               <thead>
@@ -47,10 +47,11 @@
                     />
                   </td>
                   <td>Account Name</td>
-                  <td>Amount (..)</td>
+                  <td>Amount (NGN)</td>
                   <td>Location</td>
                   <td>Trans. Type</td>
-                  <td>Date...</td>
+                  <td>Trans. Direction</td>
+                  <td>Date and Time</td>
                 </tr>
               </thead>
               <tbody>
@@ -61,7 +62,7 @@
                 No record Found
               </div> -->
                 <ng-container>
-                  <tr>
+                  <tr (click)="showDetails()">
                     <td>
                       <img
                         src="/assets/images/dashboard/detected-inactive.svg"
@@ -72,10 +73,11 @@
                     <td>12,1234...</td>
                     <td>Kaduna</td>
                     <td>Card Pay...</td>
+                    <td>Outward</td>
                     <td>12/08/2023....</td>
                   </tr>
 
-                  <tr>
+                  <tr (click)="showDetails()">
                     <td>
                       <img
                         src="/assets/images/dashboard/outward-inactive.svg"
@@ -86,52 +88,8 @@
                     <td>12,1234...</td>
                     <td>Lagos</td>
                     <td>outward...</td>
+                    <td>inward</td>
                     <td>12/08/2023....</td>
-                  </tr>
-                </ng-container>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="account-breaches">
-          <div class="table-header">Active Account Breaches</div>
-          <div style="overflow-x: auto">
-            <table>
-              <thead>
-                <tr>
-                  <td>S/N</td>
-                  <td>Account N..</td>
-                  <td>Acc. Num...</td>
-                  <td>Channel/s</td>
-                  <td>Location</td>
-                  <td>Date...</td>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- <div
-                  class="no-record"
-                  *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                >
-                  No record Found
-                </div> -->
-                <ng-container>
-                  <tr>
-                    <td>1</td>
-                    <td>Jack Samuel...</td>
-                    <td>001255...</td>
-                    <td>Altbank...</td>
-                    <td>Lagos</td>
-                    <td>12/08/2023...</td>
-                  </tr>
-
-                  <tr>
-                    <td>2</td>
-                    <td>Alde John...</td>
-                    <td>001255...</td>
-                    <td>OneBank...</td>
-                    <td>Lagos</td>
-                    <td>12/08/2023...</td>
                   </tr>
                 </ng-container>
               </tbody>

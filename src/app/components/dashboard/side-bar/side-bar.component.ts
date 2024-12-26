@@ -12,13 +12,33 @@ export class SideBarComponent {
   isKycComplete: any;
   userPermission: any;
 
+  menus: any = {
+    fraudScan: false, // Initially closed
+  };
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    console.log(this.router.url);
+
     this.userPermission = localStorage.getItem('userRight');
   }
 
+  toggleMenu(menu: string): void {
+    this.menus[menu] = !this.menus[menu];
+    console.log(this.menus[menu]);
+  }
+
   isActive(route: string) {
+    if (
+      this.router.url == '/dashboard/fraud-scanner/suspected-transaction' ||
+      this.router.url == '/dashboard/fraud-scanner/account-breaches' || this.router.url == '/dashboard/fraud-scanner/transaction-details'
+    ){
+      this.menus.fraudScan = true;
+    }else{
+      this.menus.fraudScan = false;
+    };
+
     return this.router.url.includes(route);
   }
 
