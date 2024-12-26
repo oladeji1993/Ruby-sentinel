@@ -1,0 +1,99 @@
+<div class="details">
+  <div class="content">
+    <div class="title">
+      <span><img src="/assets/images/dashboard/rule-icon.svg" alt="" /></span>
+      &nbsp; &nbsp;View Request Info
+    </div>
+    <div class="close">
+      <img
+        (click)="closeModal('close')"
+        src="/assets/images/dashboard/close.svg"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="main-container">
+    <div class="rule-details">
+      <div class="title">Release Transaction</div>
+      <div class="sub-title">Requsted by: Ruby Olawole</div>
+    </div>
+    <div class="details-content">
+      <div class="multiple-value">
+        <div class="details-item">
+          <div class="key">Request Type</div>
+          <div class="value">Release Transaction</div>
+        </div>
+
+        <div class="details-item">
+          <div class="key">Item Type</div>
+          <div class="value">Outward Transfer</div>
+        </div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Item Name</div>
+        <div class="value">Jack Samuel Briggs</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Event Keyword</div>
+        <div class="value">---</div>
+      </div>
+
+      <div class="details-item">
+        <div class="key">Reason / Description</div>
+        <div class="value">Legitimate Transaction</div>
+      </div>
+
+      <div>
+        <button type="button" class="outlined-transaction-button">
+          <div class="action-item">View Full Transaction Details ></div>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="multiple-value">
+        <div class="details-item">
+          <div class="key">Requested By</div>
+          <div class="value">Ruby Olawole</div>
+        </div>
+
+        <div class="details-item">
+          <div class="key">Date Requested</div>
+          <div class="value">25/12/2024 - 13:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <div>
+        <div class="btns">
+          <div>
+            <button type="button" class="outlined-button">
+              <div><img src="/assets/images/dashboard/close-red.svg" alt="" /></div>
+              <div class="action-item">Decline</div>
+            </button>
+          </div>
+          <div class="activateAndDeactivate">
+            <button type="submit" class="action-btn">
+              <div>
+                <img src="/assets/images/dashboard/check-white.svg" alt="" />
+              </div>
+              <div (click)="approve()" class="action-item">Accept</div>
+              <span class="flex justify-center">
+                <!-- <mat-spinner
+                            *ngIf="loading"
+                            diameter="21"
+                            class="mat-spinner-color"
+                          ></mat-spinner> -->
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

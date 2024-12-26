@@ -28,6 +28,9 @@ import { AccountBreachesComponent } from './fraud-scanner/account-breaches/accou
 import { TransactionDetailsComponent } from './fraud-scanner/transaction-details/transaction-details.component';
 import { CardContentComponent } from 'src/app/core/shared/card-content/card-content.component';
 import { ReleaseTransactionComponent } from './fraud-scanner/release-transaction/release-transaction.component';
+import { SharedModule } from 'src/app/core/shared/shared.module';
+import { RequestApprovalComponent } from './request-approval/request-approval.component';
+import { RequestDetailsComponent } from './request-approval/request-details/request-details.component';
 
 
 @NgModule({
@@ -48,11 +51,12 @@ import { ReleaseTransactionComponent } from './fraud-scanner/release-transaction
     CreateEditConfigurationComponent,
     CreateEditBlacklistComponent,
     RecvPairsComponent,
+    TransactionDetailsComponent,
     CreateEditSendRecPairComponent,
     AccountBreachesComponent,
-    CardContentComponent,
-    TransactionDetailsComponent,
-    ReleaseTransactionComponent
+    ReleaseTransactionComponent,
+    RequestApprovalComponent,
+    RequestDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -60,6 +64,7 @@ import { ReleaseTransactionComponent } from './fraud-scanner/release-transaction
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    SharedModule,
     MatInputModule,
     MatMenuModule,
     DashboardRoutingModule

@@ -11,6 +11,8 @@ import { TransCheckerComponent } from './trans-checker/trans-checker.component';
 import { RecvPairsComponent } from './recv-pairs/recv-pairs.component';
 import { AccountBreachesComponent } from './fraud-scanner/account-breaches/account-breaches.component';
 import { TransactionDetailsComponent } from './fraud-scanner/transaction-details/transaction-details.component';
+import { TransactionSummaryComponent } from './trans-checker/transaction-details/transaction-details.component';
+import { RequestApprovalComponent } from './request-approval/request-approval.component';
 
 const routes: Routes = [
   {
@@ -60,8 +62,17 @@ const routes: Routes = [
       },
 
       {
+        path: 'trans-checker/details',
+        component: TransactionSummaryComponent,
+      },
+
+      {
         path: 'Send-Recv-Pairs',
         component: RecvPairsComponent,
+      },
+      {
+        path: 'request-approval',
+        component: RequestApprovalComponent,
       },
     ]
   }

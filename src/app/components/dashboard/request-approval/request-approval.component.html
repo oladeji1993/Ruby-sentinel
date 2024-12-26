@@ -1,0 +1,110 @@
+<div id="rule">
+  <div class="header">
+    <div class="tab-name">Pending Requests for Approval</div>
+  </div>
+
+  <div class="filter-container">
+    <div class="filter-btns">
+      <div class="detected">Pending</div>
+      <div>Approved</div>
+      <div>Denied</div>
+    </div>
+    <div class="filter-input">
+      <div class="filter-item-container input-container">
+        <!-- <div>sort By:</div> -->
+        <div>
+          <select class="filter-dropdown">
+            <option></option>
+            <option>Inward</option>
+            <option>Outward</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-container">
+        <input
+          matInput
+          placeholder="Quick search"
+          class="custom-input form-control"
+          type="text"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div *ngIf="isEmpty" class="empty-state">
+      <div class="empty-state-content">
+        <div>
+          <img src="/assets/images/dashboard/code-icon.svg" alt="" />
+          <div>
+            Click on the <span class="create">“+ Create New Rule”</span> button
+            to get started with setting up a new fraud detection rule.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container" *ngIf="!isEmpty">
+      <!-- <div class="title">Static Rules</div> -->
+
+      <div style="overflow-x: auto">
+        <table>
+          <thead>
+            <tr>
+              <td>Request Type</td>
+              <td>For Item Type</td>
+              <td>Reason/Description</td>
+              <td>Requested By:</td>
+              <td>Date Requested</td>
+              <!-- <td>Status</td> -->
+              <td>....</td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <div
+                    class="no-record"
+                    *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                  >
+                    No record Found
+                  </div> -->
+            <ng-container *ngFor="let rule of rules">
+              <tr>
+                <td>{{ rule.request_type }}</td>
+                <td>
+                  <span>{{ rule.item_type }}</span>
+                </td>
+                <td>{{ rule.reason }}</td>
+                <td>{{ rule.requested_by }}</td>
+                <td>25/12/2024 - 13:00</td>
+                <td>
+                  <img
+                    (click)="veiwRuleDetails(rule)"
+                    class="more-options"
+                    src="/assets/images/rules/view-details.svg"
+                    alt=""
+                  />
+                </td>
+              </tr>
+              <!-- <mat-menu class="menu-tray" #nav="matMenu">
+                  <div class="mat-menu-item">
+                    <a style="cursor: pointer"
+                      >Edit &nbsp; &nbsp; &nbsp; &nbsp;<img
+                        src="/assets/images/dashboard/edit.svg"
+                        alt=""
+                    /></a>
+                  </div>
+                  <div style="margin-top: 1rem" class="mat-menu-item">
+                    <a style="cursor: pointer"
+                      >Delete &nbsp; &nbsp;<img
+                        src="/assets/images/dashboard/delete.svg"
+                        alt=""
+                    /></a>
+                  </div>
+                </mat-menu> -->
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

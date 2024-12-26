@@ -150,5 +150,21 @@
         <a>Configuration</a>
       </div>
     </div>
+
+    <div class="nav-item" [class.is-active]="isActive('/request-approval')">
+      <img
+        *ngIf="!isActive('/request-approval')"
+        src="/assets/images/dashboard/requests-inactive.svg"
+        alt=""
+      />
+      <img
+        *ngIf="isActive('/request-approval')"
+        src="/assets/images/dashboard/requests-active.svg"
+        alt=""
+      />
+      <div class="nav-title" [routerLink]="['/dashboard/request-approval']">
+        <a>Pending Requests</a>
+      </div>
+    </div>
   </div>
 </div>

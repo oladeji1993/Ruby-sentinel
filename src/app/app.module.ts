@@ -7,21 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { DeleteModalComponent } from './core/shared/delete-modal/delete-modal.component';
 import { SuccessModalComponent } from './core/shared/success-modal/success-modal.component';
-import { CardContentComponent } from './core/shared/card-content/card-content.component';
+import { SharedModule } from './core/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DeleteModalComponent,
-    SuccessModalComponent,
-  ],
+  declarations: [AppComponent, DeleteModalComponent, SuccessModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

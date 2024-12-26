@@ -16,8 +16,15 @@
           type="text"
         />
       </div>
+      <div class="input-container form-container transaction-type-dropdown">
+        <select style="width: 100%">
+          <option></option>
+          <option> Outward </option>
+          <option> Inward </option>
+        </select>
+      </div>
       <div>
-        <button>Submit</button>
+        <button routerLink="/dashboard/trans-checker/details">Submit</button>
       </div>
     </div>
   </div>
@@ -28,7 +35,8 @@
         <div>
           <img src="/assets/images/dashboard/funds-line.svg" alt="" />
           <div>
-            Fill in the Session ID above  and click <span class="create">“Search”</span>to analyse the transaction
+            Fill in the Session ID above and click
+            <span class="create">“Search”</span>to analyse the transaction
           </div>
         </div>
       </div>
