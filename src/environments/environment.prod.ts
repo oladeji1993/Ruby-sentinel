@@ -1,0 +1,18 @@
+export const environment = {
+  production: true,
+  // baseUrl: 'https://encryptionmiddleware.sterlingapps.p.azurewebsites.net/gateway/sandbox/api/',
+  // baseUrl: 'https://sandboxapi-pilot.appsuport.p.azurewebsites.net/gateway/sandbox/api/',
+  apiBaseUrl: 'https://5f36-102-88-108-166.ngrok-free.app/api/RUBYSentinel',
+  XApiKey: '2D6gqApezbU2aqJB',
+  // XApiKey: 'pgH7QzFHJx4w46fI~5Uzi4RvtTwQsr',
+  baseUrl: 'https://uat-gateway.sterling.ng/api/UserProfile',
+  applicationBaseUrl: 'https://uat-gateway.sterling.ng/api/Application',
+  static_IV_KEY: 'BE/s3V0HtpPsE+1x',
+  static_app_Key: 'zAL7X5AVRm8l4Ifs',
+  // APP_IV_KEY: 'tmUw2XuaoLcBK3PqMQnz+w==',
+  // APP_Key: 'o5D7G4iHirNb8GGCu04pQw==',
+  // verifyTokenBaseUrl: 'https://onetokenapi-newdev.az-sterlingapp-tcoe-dev.p.azurewebsites.net',
+  verifyTokenBaseUrl: 'https://onetoken-api.sterling.ng',
+  Api_Key: 'zAL7X5AVRm8l4Ifs',
+  Api_IV: 'BE/s3V0HtpPsE+1x',
+};

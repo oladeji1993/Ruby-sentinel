@@ -7,26 +7,43 @@
     <div class="login-form">
       <h2>Welcome Back</h2>
       <p>Enter your credentials to continue.</p>
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
         <div class="form-container">
           <div class="input-container">
-            <label class="label" for="email"> Username </label>
-            <input matInput class="custom-input form-control" type="text" />
+            <label class="label" for="email"> Email </label>
+            <input
+              matInput
+              formControlName="email"
+              class="custom-input form-control"
+              type="text"
+            />
+            <mat-error
+              class="alert"
+              *ngIf="
+                (loginFormControl['email'].touched || submitted) &&
+                loginFormControl['email'].invalid
+              "
+            >
+              <img
+                src="/assets/icons/error.svg"
+                alt=""
+                class="img-fluid error-icon"
+              />
+              {{ getErrorMessage("email") }}
+            </mat-error>
           </div>
 
           <div class="password-input">
             <div class="input-container">
               <label class="label" for="email"> Password </label>
               <input
+                formControlName="password"
                 [type]="hide ? 'text' : 'password'"
                 class="custom-input"
                 type="password"
               />
             </div>
             <div class="show_password">
-              <!-- <mat-icon matSuffix (click)="hide = !hide">{{
-                hide ? "visibility" : "visibility_off"
-              }}</mat-icon> -->
               <span class="password-toggle" (click)="hide = !hide">
                 <span *ngIf="!hide"
                   ><img
@@ -42,7 +59,7 @@
                 /></span>
               </span>
             </div>
-            <!-- <mat-error
+            <mat-error
               class="alert"
               *ngIf="
                 (loginFormControl['password'].touched || submitted) &&
@@ -55,18 +72,29 @@
                 class="img-fluid error-icon"
               />
               {{ getErrorMessage("password") }}
-            </mat-error> -->
+            </mat-error>
           </div>
 
-          <div class="input-container">
+          <!-- <div class="input-container">
             <label class="label" for="email"> Token </label>
             <input matInput class="custom-input form-control" type="number" />
-          </div>
+          </div> -->
         </div>
 
         <div class="login-btn">
-          <button routerLink="/dashboard" class="app_medium_button">
-            Login
+          <button
+            class="btn app_medium_button"
+            [disabled]="loader"
+            type="submit"
+          >
+            <span *ngIf="!loader">Sign In</span>
+            <span class="flex justify-center">
+              <mat-spinner
+                *ngIf="loader"
+                diameter="21"
+                class="mat-spinner-color"
+              ></mat-spinner>
+            </span>
           </button>
         </div>
       </form>

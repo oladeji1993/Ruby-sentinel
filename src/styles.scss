@@ -148,3 +148,32 @@ mat-error {
   border-radius: 8px;
   background-clip: content-box;
 }
+
+:root {
+  .err-notification {
+    --mdc-snackbar-container-color: #ef4444;
+  }
+
+  .err-notification .mdc-snackbar__label {
+    color: #fff !important; /* Text color */
+  }
+
+  .err-notification .mdc-button__label {
+    color: #fff !important; 
+  }
+}
+
+:root {
+  .success-notification {
+    --mdc-snackbar-container-color: rgb(137, 237, 184);
+  }
+
+  .success-notification .mdc-snackbar__label {
+    color: #000 !important; 
+  }
+
+  .success-notification .mdc-button__label {
+    color: #000 !important; 
+  }
+}
+

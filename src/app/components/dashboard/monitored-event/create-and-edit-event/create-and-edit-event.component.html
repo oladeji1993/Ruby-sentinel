@@ -14,7 +14,7 @@
     {{ data.actionType == "Create" ? "add" : "edit" }} an event to monitor.
   </div>
 
-  <form [formGroup]="eventForm">
+  <form [formGroup]="eventForm" (ngSubmit)="createEvent('Create')">
     <div class="form-container">
       <div class="input-container">
         <label class="label" for="email"> Event Category </label>
@@ -33,6 +33,20 @@
           </option>
           <option value="Behavioural Anomalies">Behavioural Anomalies</option>
         </select>
+        <mat-error
+          class="alert"
+          *ngIf="
+            (eventFormControl['eventCategory'].touched || submitted) &&
+            eventFormControl['eventCategory']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("eventCategory") }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -43,6 +57,21 @@
           class="custom-input form-control"
           type="text"
         />
+
+        <mat-error
+          class="alert"
+          *ngIf="
+            (eventFormControl['eventName'].touched || submitted) &&
+            eventFormControl['eventName']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("eventName") }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -53,6 +82,21 @@
           class="custom-input form-control"
           type="text"
         />
+
+        <mat-error
+          class="alert"
+          *ngIf="
+            (eventFormControl['eventTitle'].touched || submitted) &&
+            eventFormControl['eventTitle']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("eventTitle") }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -63,6 +107,20 @@
           rows="10"
           cols="50"
         ></textarea>
+        <mat-error
+          class="alert"
+          *ngIf="
+            (eventFormControl['description'].touched || submitted) &&
+            eventFormControl['description']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("eventTitle") }}
+        </mat-error>
       </div>
 
       <div class="buttons">
@@ -72,16 +130,16 @@
           </button>
         </div>
         <div>
-          <button (click)="createEvent('create')" type="submit" class="action-btn">
-            <span
+          <button type="submit" class="action-btn">
+            <span *ngIf="!loader"
               >{{ data.actionType == "Create" ? "Create" : "Update" }}
             </span>
             <span class="flex justify-center">
-              <!-- <mat-spinner
-                *ngIf="loading"
+              <mat-spinner
+                *ngIf="loader"
                 diameter="21"
                 class="mat-spinner-color"
-              ></mat-spinner> -->
+              ></mat-spinner>
             </span>
           </button>
         </div>

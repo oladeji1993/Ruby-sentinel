@@ -35,3 +35,7 @@
     border-radius: 8px;
   }
 }
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #ffffff !important;
+}

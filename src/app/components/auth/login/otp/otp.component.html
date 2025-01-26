@@ -1,0 +1,31 @@
+<div class="cancel" (click)="close()">
+  <!-- <img src="" alt=""> -->
+  close
+</div>
+<div class="container">
+  <h1>Verification</h1>
+  <p>One-time password validation (oneToken)</p>
+  <div>
+    <div class="grid-box">
+      <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        [config]="config"
+      ></ng-otp-input>
+    </div>
+    <span *ngIf="notValid" class="tokenValidation"
+      >Your oneToken must be 6 digits</span
+    >
+    <div class="flex-box">
+      <button [disabled]="loader" class="ok" (click)="validateOTP()">
+        <span *ngIf="!loader">Proceed</span>
+        <span class="auth-loader">
+          <mat-spinner
+            *ngIf="loader"
+            diameter="21"
+            class="mat-spinner-color"
+          ></mat-spinner>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>

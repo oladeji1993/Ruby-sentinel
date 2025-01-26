@@ -1,0 +1,60 @@
+.cancel {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+  color: rgba(215, 34, 106, 1);
+  cursor: pointer;
+}
+
+.tokenValidation {
+  color: rgba(215, 34, 106, 1);
+}
+.container {
+  align-items: center;
+  text-align: center;
+  // margin-top:0.76rem
+
+  .grid-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #ffffff !important;
+}
+
+h1 {
+  color: rgba(215, 34, 106, 1);
+  font-weight: 600;
+}
+.ok {
+  margin: 25px 0px 28px 0px;
+  box-sizing: border-box;
+  background: rgba(215, 34, 106, 1);
+  border-radius: 27px;
+  color: #ffffff;
+  border: none;
+  width: 200px;
+  height: 45px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+.auth-loader {
+  display: flex;
+  justify-content: center;
+}
+.ok:disabled {
+  background-color: #d6dadf;
+}
+
+span {
+  text-align: center;
+
+  .resend {
+    color: #db353a;
+  }
+}

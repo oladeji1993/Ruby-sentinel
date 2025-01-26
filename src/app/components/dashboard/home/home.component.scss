@@ -62,6 +62,15 @@
       grid-column: span 2; /* Make this card span 2 columns */
     }
 
+    .risk-score{
+      grid-column: span 3; /* Single column for smaller cards */
+    }
+
+    
+    .risk-score{
+      grid-column: span 3; /* Single column for smaller cards */
+    }
+
     .health-check {
       grid-column: span 1; /* Single column for smaller cards */
     }

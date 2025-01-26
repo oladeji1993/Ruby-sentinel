@@ -8,6 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { DeleteModalComponent } from './core/shared/delete-modal/delete-modal.component';
 import { SuccessModalComponent } from './core/shared/success-modal/success-modal.component';
 import { SharedModule } from './core/shared/shared.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+
 
 @NgModule({
   declarations: [AppComponent, DeleteModalComponent, SuccessModalComponent],
@@ -16,9 +20,17 @@ import { SharedModule } from './core/shared/shared.module';
     AppRoutingModule,
     SharedModule,
     MatIconModule,
+    HttpClientModule,
+    MatDialogModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor ,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

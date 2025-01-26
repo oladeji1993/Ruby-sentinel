@@ -33,6 +33,10 @@ import { RequestApprovalComponent } from './request-approval/request-approval.co
 import { RequestDetailsComponent } from './request-approval/request-details/request-details.component';
 import { SettingsComponent } from './header/settings/settings.component';
 import { AddUserComponent } from './header/settings/add-user/add-user.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+
 
 
 @NgModule({
@@ -68,9 +72,11 @@ import { AddUserComponent } from './header/settings/add-user/add-user.component'
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatSnackBarModule,
     SharedModule,
     MatInputModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     DashboardRoutingModule
   ]
 })

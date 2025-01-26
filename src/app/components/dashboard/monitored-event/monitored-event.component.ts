@@ -1,16 +1,42 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAndEditEventComponent } from './create-and-edit-event/create-and-edit-event.component';
 import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-modal.component';
+import { RubyService } from 'src/app/core/services/ruby.service';
+import { Observable } from 'rxjs';
+import {
+  decryptUserData,
+  errorNotifier,
+  successNotifier,
+} from 'src/app/core/utils/helpers';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-monitored-event',
   templateUrl: './monitored-event.component.html',
   styleUrls: ['./monitored-event.component.scss'],
 })
-export class MonitoredEventComponent {
+export class MonitoredEventComponent implements OnInit {
+  loader: boolean = false;
+  allRetrivedEvents: any;
+
   constructor(
-    private dialog: MatDialog) {}
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private rubyService: RubyService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllEvents();
+  }
+
+  getAllEvents() {
+    this.getApiResponseHandler(
+      this.rubyService.getApiCallTemplate('Events', 'GetAll'),
+      ''
+    );
+  }
+
   events = [
     {
       title: 'Change of Password',
@@ -104,10 +130,13 @@ export class MonitoredEventComponent {
   createAndEdit(item: any) {
     let dialogRef = this.dialog.open(CreateAndEditEventComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      data: { actionType: item == 'Create' ? 'Create' : 'Edit', data: item != 'Create' ? item : '' },
+      data: {
+        actionType: item == 'Create' ? 'Create' : 'Edit',
+        data: item != 'Create' ? item : '',
+      },
       width: '440px',
       height: 'auto',
-      disableClose: true
+      disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
   }
@@ -118,8 +147,34 @@ export class MonitoredEventComponent {
       data: { actionType: 'event', data: item },
       width: '440px',
       height: 'auto',
-      disableClose: true
+      disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  private getApiResponseHandler(observable: Observable<any>, item: any): any {
+    this.loader = true;
+    observable.subscribe({
+      next: (res: any) => {
+        const apiResponse: any = decryptUserData(res?.response);
+        if (apiResponse.isSuccess == true) {
+          this.loader = false;
+          this.allRetrivedEvents = apiResponse?.value?.events;
+        } else {
+          this.loader = false;
+          errorNotifier(this.snackBar, apiResponse.responseDescription);
+        }
+        this.loader = false;
+      },
+      error: (error: any) => {
+        this.loader = false;
+        this.loader = false;
+        errorNotifier(this.snackBar, 'unable to process');
+      },
+      complete: () => {
+        this.loader = false;
+        console.log('Response returned');
+      },
+    });
   }
 }

@@ -16,7 +16,7 @@
 
     .login-form {
       width: 400px;
-      height: 468px;
+      height: 400px;
       background-color: rgba(255, 255, 255, 1);
       padding: 2.5rem;
       border-radius: 20px;
@@ -60,6 +60,12 @@
       align-items: center;
       margin-top: 2rem;
       text-align: center;
+
+      .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 
@@ -70,4 +76,8 @@
     display: inline-block;
     vertical-align: middle;
   }
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #ffffff !important;
 }
