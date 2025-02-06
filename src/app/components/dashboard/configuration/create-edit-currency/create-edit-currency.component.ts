@@ -1,22 +1,17 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RubyService } from 'src/app/core/services/ruby.service';
-import { SuccessModalComponent } from 'src/app/core/shared/success-modal/success-modal.component';
-import { decryptUserData, encryptUserData } from 'src/app/core/utils/helpers';
+import { CreateEditConfigurationComponent } from '../create-edit-configuration/create-edit-configuration.component';
+import { encryptUserData } from 'src/app/core/utils/helpers';
 
 @Component({
-  selector: 'app-create-edit-configuration',
-  templateUrl: './create-edit-configuration.component.html',
-  styleUrls: ['./create-edit-configuration.component.scss'],
+  selector: 'app-create-edit-currency',
+  templateUrl: './create-edit-currency.component.html',
+  styleUrls: ['./create-edit-currency.component.scss'],
 })
-export class CreateEditConfigurationComponent {
-  channelForm!: FormGroup;
+export class CreateEditCurrencyComponent {
+  currencyForm!: FormGroup;
   submitted: boolean = false;
   loading: boolean = false;
 
@@ -32,40 +27,40 @@ export class CreateEditConfigurationComponent {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        channelName: this.data.data?.channelName,
-        channelCode: this.data.data?.channelCode,
+        currencyName: this.data.data?.channelName,
+        currencyCode: this.data.data?.channelCode,
         description: this.data.data?.description,
       };
-      this.channelForm.patchValue(matchedPayload);
+      this.currencyForm.patchValue(matchedPayload);
     }
   }
 
   initializeForm() {
-    this.channelForm = this.fb.group({
-      channelName: ['', Validators.required],
-      channelCode: ['', Validators.required],
+    this.currencyForm = this.fb.group({
+      currencyName: ['', Validators.required],
+      currencyCode: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
 
-  get channelFormControl() {
-    return this.channelForm.controls;
+  get currencyFormControl() {
+    return this.currencyForm.controls;
   }
 
   getErrorMessage(instance: string) {
     if (
       instance === 'channelName' &&
-      this.channelFormControl['channelName'].hasError('required')
+      this.currencyFormControl['channelName'].hasError('required')
     ) {
       return 'Channel name is required';
     } else if (
       instance === 'channelCode' &&
-      this.channelFormControl['channelCode'].hasError('required')
+      this.currencyFormControl['channelCode'].hasError('required')
     ) {
       return 'Channel code is required';
     } else if (
       instance === 'description' &&
-      this.channelFormControl['description'].hasError('required')
+      this.currencyFormControl['description'].hasError('required')
     ) {
       return 'Please enter a description';
     } else {
@@ -82,13 +77,13 @@ export class CreateEditConfigurationComponent {
     }, 700);
   }
 
-  createEvent(item: any) {
+  createCurrency(item: any) {
     this.submitted = true;
-    if (this.channelForm.invalid) {
+    if (this.currencyForm.invalid) {
       return;
     } else {
       this.loading = true;
-      const { channelName, channelCode, description } = this.channelForm.value;
+      const { channelName, channelCode, description } = this.currencyForm.value;
       let data = {
         id: null,
         name: channelName,
@@ -99,7 +94,7 @@ export class CreateEditConfigurationComponent {
       this.rubyService
         .postApiResponseHandler(
           this.rubyService.postApiCallTemplate(
-            'Channels',
+            'Currency',
             'AddOrUpdate',
             // {request: payload}
             data

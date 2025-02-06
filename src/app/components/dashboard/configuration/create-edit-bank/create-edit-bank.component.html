@@ -7,19 +7,19 @@
     />
   </div>
   <div class="header">
-    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Channel
+    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Bank
   </div>
   <div class="sub-header">
     Please fill in the details to
-    {{ data.actionType == "Create" ? "create a new " : "edit" }} channel.
+    {{ data.actionType == "Create" ? "create a new " : "edit" }} Bank.
   </div>
 
-  <form [formGroup]="channelForm">
+  <form [formGroup]="bankForm">
     <div class="form-container">
       <div class="input-container">
-        <label class="label" for="email"> Channel Name </label>
+        <label class="label" for="email"> Bank Name </label>
         <input
-          formControlName="channelName"
+          formControlName="bankName"
           matInput
           class="custom-input form-control"
           type="text"
@@ -28,8 +28,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['channelName'].touched || submitted) &&
-            channelFormControl['channelName']?.invalid
+            (bankFormControl['bankName'].touched || submitted) &&
+            bankFormControl['bankName']?.invalid
           "
         >
           <img
@@ -37,14 +37,14 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("channelName") }}
+          {{ getErrorMessage("bankName") }}
         </mat-error>
       </div>
 
       <div class="input-container">
-        <label class="label" for="email"> Channel Code </label>
+        <label class="label" for="email"> Bank Code </label>
         <input
-          formControlName="channelCode"
+          formControlName="bankCode"
           matInput
           class="custom-input form-control"
           type="text"
@@ -53,8 +53,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['channelCode'].touched || submitted) &&
-            channelFormControl['channelCode']?.invalid
+            (bankFormControl['bankCode'].touched || submitted) &&
+            bankFormControl['bankCode']?.invalid
           "
         >
           <img
@@ -62,7 +62,7 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("channelCode") }}
+          {{ getErrorMessage("bankCode") }}
         </mat-error>
       </div>
 
@@ -77,8 +77,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['description'].touched || submitted) &&
-            channelFormControl['description']?.invalid
+            (bankFormControl['description'].touched || submitted) &&
+            bankFormControl['description']?.invalid
           "
         >
           <img
@@ -98,7 +98,7 @@
         </div>
         <div>
           <button
-            (click)="createEvent('create')"
+            (click)="createBank('create')"
             type="submit"
             class="action-btn"
           >

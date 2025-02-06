@@ -7,19 +7,20 @@
     />
   </div>
   <div class="header">
-    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Channel
+    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Transaction Type
   </div>
   <div class="sub-header">
     Please fill in the details to
-    {{ data.actionType == "Create" ? "create a new " : "edit" }} channel.
+    {{ data.actionType == "Create" ? "create a new " : "edit" }} Transaction
+    Type.
   </div>
 
-  <form [formGroup]="channelForm">
+  <form [formGroup]="currencyForm">
     <div class="form-container">
       <div class="input-container">
-        <label class="label" for="email"> Channel Name </label>
+        <label class="label" for="email"> Transaction Type Name </label>
         <input
-          formControlName="channelName"
+          formControlName="transactionName"
           matInput
           class="custom-input form-control"
           type="text"
@@ -28,8 +29,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['channelName'].touched || submitted) &&
-            channelFormControl['channelName']?.invalid
+            (currencyFormControl['transactionName'].touched || submitted) &&
+            currencyFormControl['transactionName']?.invalid
           "
         >
           <img
@@ -37,14 +38,14 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("channelName") }}
+          {{ getErrorMessage("transactionName") }}
         </mat-error>
       </div>
 
       <div class="input-container">
-        <label class="label" for="email"> Channel Code </label>
+        <label class="label" for="email"> Transaction Type Code </label>
         <input
-          formControlName="channelCode"
+          formControlName="transanctionCode"
           matInput
           class="custom-input form-control"
           type="text"
@@ -53,8 +54,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['channelCode'].touched || submitted) &&
-            channelFormControl['channelCode']?.invalid
+            (currencyFormControl['transanctionCode'].touched || submitted) &&
+            currencyFormControl['transanctionCode']?.invalid
           "
         >
           <img
@@ -62,7 +63,7 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("channelCode") }}
+          {{ getErrorMessage("transanctionCode") }}
         </mat-error>
       </div>
 
@@ -77,8 +78,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (channelFormControl['description'].touched || submitted) &&
-            channelFormControl['description']?.invalid
+            (currencyFormControl['description'].touched || submitted) &&
+            currencyFormControl['description']?.invalid
           "
         >
           <img
@@ -98,7 +99,7 @@
         </div>
         <div>
           <button
-            (click)="createEvent('create')"
+            (click)="createCurrency('create')"
             type="submit"
             class="action-btn"
           >

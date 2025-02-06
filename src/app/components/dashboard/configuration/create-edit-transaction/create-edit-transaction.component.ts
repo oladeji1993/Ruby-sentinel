@@ -1,22 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RubyService } from 'src/app/core/services/ruby.service';
-import { SuccessModalComponent } from 'src/app/core/shared/success-modal/success-modal.component';
-import { decryptUserData, encryptUserData } from 'src/app/core/utils/helpers';
+import { encryptUserData } from 'src/app/core/utils/helpers';
 
 @Component({
-  selector: 'app-create-edit-configuration',
-  templateUrl: './create-edit-configuration.component.html',
-  styleUrls: ['./create-edit-configuration.component.scss'],
+  selector: 'app-create-edit-transaction',
+  templateUrl: './create-edit-transaction.component.html',
+  styleUrls: ['./create-edit-transaction.component.scss'],
 })
-export class CreateEditConfigurationComponent {
-  channelForm!: FormGroup;
+export class CreateEditTransactionComponent {
+  transactionForm!: FormGroup;
   submitted: boolean = false;
   loading: boolean = false;
 
@@ -25,47 +19,47 @@ export class CreateEditConfigurationComponent {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private rubyService: RubyService,
-    private dialogRef: MatDialogRef<CreateEditConfigurationComponent>
+    private dialogRef: MatDialogRef<CreateEditTransactionComponent>
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        channelName: this.data.data?.channelName,
-        channelCode: this.data.data?.channelCode,
+        transactionName: this.data.data?.transactionName,
+        transactionCode: this.data.data?.transactionCode,
         description: this.data.data?.description,
       };
-      this.channelForm.patchValue(matchedPayload);
+      this.transactionForm.patchValue(matchedPayload);
     }
   }
 
   initializeForm() {
-    this.channelForm = this.fb.group({
-      channelName: ['', Validators.required],
-      channelCode: ['', Validators.required],
+    this.transactionForm = this.fb.group({
+      transactionName: ['', Validators.required],
+      transactionCode: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
 
-  get channelFormControl() {
-    return this.channelForm.controls;
+  get transactionFormControl() {
+    return this.transactionForm.controls;
   }
 
   getErrorMessage(instance: string) {
     if (
-      instance === 'channelName' &&
-      this.channelFormControl['channelName'].hasError('required')
+      instance === 'transactionName' &&
+      this.transactionFormControl['transactionName'].hasError('required')
     ) {
-      return 'Channel name is required';
+      return 'Transaction name is required';
     } else if (
-      instance === 'channelCode' &&
-      this.channelFormControl['channelCode'].hasError('required')
+      instance === 'transactionCode' &&
+      this.transactionFormControl['transactionCode'].hasError('required')
     ) {
-      return 'Channel code is required';
+      return 'Transaction code is required';
     } else if (
       instance === 'description' &&
-      this.channelFormControl['description'].hasError('required')
+      this.transactionFormControl['description'].hasError('required')
     ) {
       return 'Please enter a description';
     } else {
@@ -82,24 +76,24 @@ export class CreateEditConfigurationComponent {
     }, 700);
   }
 
-  createEvent(item: any) {
+  createTransaction(item: any) {
     this.submitted = true;
-    if (this.channelForm.invalid) {
+    if (this.transactionForm.invalid) {
       return;
     } else {
       this.loading = true;
-      const { channelName, channelCode, description } = this.channelForm.value;
+      const { transactionName, transactionCode, description } = this.transactionForm.value;
       let data = {
         id: null,
-        name: channelName,
-        code: channelCode,
+        name: transactionName,
+        code: transactionCode,
         description: description,
       };
       let payload = encryptUserData(data);
       this.rubyService
         .postApiResponseHandler(
           this.rubyService.postApiCallTemplate(
-            'Channels',
+            'Transactions',
             'AddOrUpdate',
             // {request: payload}
             data

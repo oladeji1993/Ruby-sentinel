@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://5f36-102-88-108-166.ngrok-free.app/api/RUBYSentinel',
+  apiBaseUrl: 'https://9380-102-88-110-160.ngrok-free.app/api/RUBYSentinel',
   XApiKey: '2D6gqApezbU2aqJB',
   // baseUrl: 'https://sandboxapi-pilot.appsuport.p.azurewebsites.net/gateway/sandbox/api/',
   baseUrl: 'https://uat-gateway.sterling.ng/api/UserProfile',

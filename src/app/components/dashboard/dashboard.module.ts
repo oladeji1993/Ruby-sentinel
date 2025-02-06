@@ -35,6 +35,9 @@ import { SettingsComponent } from './header/settings/settings.component';
 import { AddUserComponent } from './header/settings/add-user/add-user.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CreateEditBankComponent } from './configuration/create-edit-bank/create-edit-bank.component';
+import { CreateEditTransactionComponent } from './configuration/create-edit-transaction/create-edit-transaction.component';
+import { CreateEditCurrencyComponent } from './configuration/create-edit-currency/create-edit-currency.component';
 
 
 
@@ -64,7 +67,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     RequestApprovalComponent,
     RequestDetailsComponent,
     SettingsComponent,
-    AddUserComponent
+    AddUserComponent,
+    CreateEditBankComponent,
+    CreateEditTransactionComponent,
+    CreateEditCurrencyComponent
   ],
   imports: [
     CommonModule,

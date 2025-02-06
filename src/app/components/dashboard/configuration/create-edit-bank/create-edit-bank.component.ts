@@ -1,22 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RubyService } from 'src/app/core/services/ruby.service';
-import { SuccessModalComponent } from 'src/app/core/shared/success-modal/success-modal.component';
-import { decryptUserData, encryptUserData } from 'src/app/core/utils/helpers';
+import { encryptUserData } from 'src/app/core/utils/helpers';
 
 @Component({
-  selector: 'app-create-edit-configuration',
-  templateUrl: './create-edit-configuration.component.html',
-  styleUrls: ['./create-edit-configuration.component.scss'],
+  selector: 'app-create-edit-bank',
+  templateUrl: './create-edit-bank.component.html',
+  styleUrls: ['./create-edit-bank.component.scss'],
 })
-export class CreateEditConfigurationComponent {
-  channelForm!: FormGroup;
+export class CreateEditBankComponent {
+  bankForm!: FormGroup;
   submitted: boolean = false;
   loading: boolean = false;
 
@@ -25,47 +19,47 @@ export class CreateEditConfigurationComponent {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private rubyService: RubyService,
-    private dialogRef: MatDialogRef<CreateEditConfigurationComponent>
+    private dialogRef: MatDialogRef<CreateEditBankComponent>
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        channelName: this.data.data?.channelName,
-        channelCode: this.data.data?.channelCode,
+        bankName: this.data.data?.bankName,
+        bankCode: this.data.data?.bankCode,
         description: this.data.data?.description,
       };
-      this.channelForm.patchValue(matchedPayload);
+      this.bankForm.patchValue(matchedPayload);
     }
   }
 
   initializeForm() {
-    this.channelForm = this.fb.group({
-      channelName: ['', Validators.required],
-      channelCode: ['', Validators.required],
+    this.bankForm = this.fb.group({
+      bankName: ['', Validators.required],
+      bankCode: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
 
-  get channelFormControl() {
-    return this.channelForm.controls;
+  get bankFormControl() {
+    return this.bankForm.controls;
   }
 
   getErrorMessage(instance: string) {
     if (
       instance === 'channelName' &&
-      this.channelFormControl['channelName'].hasError('required')
+      this.bankFormControl['bankName'].hasError('required')
     ) {
-      return 'Channel name is required';
+      return 'Bank name is required';
     } else if (
       instance === 'channelCode' &&
-      this.channelFormControl['channelCode'].hasError('required')
+      this.bankFormControl['bankCode'].hasError('required')
     ) {
-      return 'Channel code is required';
+      return 'Bank code is required';
     } else if (
       instance === 'description' &&
-      this.channelFormControl['description'].hasError('required')
+      this.bankFormControl['description'].hasError('required')
     ) {
       return 'Please enter a description';
     } else {
@@ -82,13 +76,13 @@ export class CreateEditConfigurationComponent {
     }, 700);
   }
 
-  createEvent(item: any) {
+  createBank(item: any) {
     this.submitted = true;
-    if (this.channelForm.invalid) {
+    if (this.bankForm.invalid) {
       return;
     } else {
       this.loading = true;
-      const { channelName, channelCode, description } = this.channelForm.value;
+      const { channelName, channelCode, description } = this.bankForm.value;
       let data = {
         id: null,
         name: channelName,
@@ -99,7 +93,7 @@ export class CreateEditConfigurationComponent {
       this.rubyService
         .postApiResponseHandler(
           this.rubyService.postApiCallTemplate(
-            'Channels',
+            'Banks',
             'AddOrUpdate',
             // {request: payload}
             data

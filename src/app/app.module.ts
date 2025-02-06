@@ -11,7 +11,7 @@ import { SharedModule } from './core/shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, DeleteModalComponent, SuccessModalComponent],
@@ -19,6 +19,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    MatSnackBarModule,
     MatIconModule,
     HttpClientModule,
     MatDialogModule,
@@ -27,7 +28,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor ,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],

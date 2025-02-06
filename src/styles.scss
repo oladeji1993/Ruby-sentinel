@@ -150,6 +150,16 @@ mat-error {
 }
 
 :root {
+  --spinner-color: #fff;
+}
+
+::ng-deep .mat-progress-spinner circle,
+::ng-deep .mat-spinner circle {
+  stroke: var(--spinner-color) !important;
+}
+
+
+:root {
   .err-notification {
     --mdc-snackbar-container-color: #ef4444;
   }
@@ -159,7 +169,7 @@ mat-error {
   }
 
   .err-notification .mdc-button__label {
-    color: #fff !important; 
+    color: #fff !important;
   }
 }
 
@@ -169,11 +179,10 @@ mat-error {
   }
 
   .success-notification .mdc-snackbar__label {
-    color: #000 !important; 
+    color: #000 !important;
   }
 
   .success-notification .mdc-button__label {
-    color: #000 !important; 
+    color: #000 !important;
   }
 }
-

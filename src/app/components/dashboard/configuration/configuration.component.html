@@ -8,10 +8,12 @@
       <!-- <div class="view">View:</div> -->
       <div class="filter-dropdown">
         <div class="input-container">
-          <select formControlName="apiType" style="width: 100%">
+          <select (change)="actionType($event)" style="width: 100%">
           <option></option>
-            <option>Channel</option>
-            <option>Bank</option>
+            <option value="channel">Channel</option>
+            <option value="bank">Bank</option>
+            <option value="transaction">Transaction Type</option>
+            <option value="currency">Currency</option>
           </select>
         </div>
       </div>
@@ -24,7 +26,7 @@
         />
       </div>
       <div>
-        <button (click)="createAndEdit('Create')">+ Create New</button>
+        <button (click)="createConfiguration('Create')">+ Create New</button>
       </div>
     </div>
     <div class="filter-input">
@@ -71,7 +73,7 @@
                   </td>
                   <td>{{ item.description }}</td>
                   <td>
-                    <img (click)="createAndEdit(item)" src="/assets/images/dashboard/edit.svg" alt="" />
+                    <img (click)="createConfiguration(item)" src="/assets/images/dashboard/edit.svg" alt="" />
                   </td>
                   <td>
                     <img (click)="deleteModal(item)" src="/assets/images/dashboard/delete.svg" alt="" />
