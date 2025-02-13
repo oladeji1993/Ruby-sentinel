@@ -30,11 +30,21 @@ export class MonitoredEventComponent implements OnInit {
     this.getAllEvents();
   }
 
+
   getAllEvents() {
-    this.getApiResponseHandler(
-      this.rubyService.getApiCallTemplate('Events', 'GetAll'),
-      ''
-    );
+    this.rubyService
+      .getApiResponseHandler(this.rubyService.getApiCallTemplate('Events', 'GetAll'), '')
+      .subscribe({
+        next: (response) => {
+          console.log('Success:', response);          
+          // this.loading = false;
+          // Perform additional actions if needed
+        },
+        error: (error) => {
+          // this.loading = false;
+          console.error('Error:', error);
+        },
+      });
   }
 
   events = [

@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-modal.component';
 import { CreateEditSendRecPairComponent } from './create-edit-send-rec-pair/create-edit-send-rec-pair.component';
+import { RubyService } from 'src/app/core/services/ruby.service';
 
 @Component({
   selector: 'app-recv-pairs',
   templateUrl: './recv-pairs.component.html',
   styleUrls: ['./recv-pairs.component.scss']
 })
-export class RecvPairsComponent {
-  constructor(private dialog: MatDialog) {}
+export class RecvPairsComponent implements OnInit {
+  constructor(private dialog: MatDialog, private gap: RubyService) {}
+
+  ngOnInit(): void {
+      this.getAllSenderReciver();
+  }
 
   items = [
     {
@@ -66,6 +71,22 @@ export class RecvPairsComponent {
       disableClose: true
     });
     // dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  getAllSenderReciver() {
+    this.gap
+      .getApiResponseHandler(this.gap.getApiCallTemplate('SenderReceiver', 'GetAll'), '')
+      .subscribe({
+        next: (response) => {
+          console.log('Success:', response);          
+          // this.loading = false;
+          // Perform additional actions if needed
+        },
+        error: (error) => {
+          // this.loading = false;
+          console.error('Error:', error);
+        },
+      });
   }
 
 

@@ -112,7 +112,8 @@ export class CreateAndEditEventComponent implements OnInit {
         description: description,
       };
       let payload = encryptUserData(data);
-
+      console.log(payload);
+      
       this.requestSubscription = this.postApiResponseHandler(
         this.rubyService.postApiCallTemplate('Events', 'AddOrUpdate', {
           request: payload,

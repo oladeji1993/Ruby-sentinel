@@ -90,19 +90,20 @@ export class CreateEditConfigurationComponent {
       this.loading = true;
       const { channelName, channelCode, description } = this.channelForm.value;
       let data = {
-        id: null,
+        id: '09b9bda1-5cf1-416e-aa43-bb40c81e55c3',
         name: channelName,
         code: channelCode,
         description: description,
       };
+      console.log(data);
+      
       let payload = encryptUserData(data);
       this.rubyService
         .postApiResponseHandler(
           this.rubyService.postApiCallTemplate(
             'Channels',
             'AddOrUpdate',
-            // {request: payload}
-            data
+            {request: payload}
           ),
           item
         )

@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateEditBlacklistComponent } from './create-edit-blacklist/create-edit-blacklist.component';
 import { DeleteModalComponent } from 'src/app/core/shared/delete-modal/delete-modal.component';
+import { RubyService } from 'src/app/core/services/ruby.service';
 
 @Component({
   selector: 'app-blacklist',
   templateUrl: './blacklist.component.html',
-  styleUrls: ['./blacklist.component.scss']
+  styleUrls: ['./blacklist.component.scss'],
 })
-export class BlacklistComponent {
-  constructor(private dialog: MatDialog) {}
+export class BlacklistComponent implements OnInit {
+  constructor(private dialog: MatDialog, private gap: RubyService) {}
+
+  ngOnInit(): void {
+    this.getAllBlacklist();
+  }
 
   items = [
     {
@@ -46,14 +51,35 @@ export class BlacklistComponent {
     },
   ];
 
+  getAllBlacklist() {
+    this.gap
+      .getApiResponseHandler(
+        this.gap.getApiCallTemplate('Blacklist', 'GetAll'),
+        ''
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('Success:', response);
+          // this.loading = false;
+          // Perform additional actions if needed
+        },
+        error: (error) => {
+          // this.loading = false;
+          console.error('Error:', error);
+        },
+      });
+  }
 
   createAndEdit(item: any) {
     let dialogRef = this.dialog.open(CreateEditBlacklistComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      data: { actionType: item == 'Create' ? 'Create' : 'Edit', data: item != 'Create' ? item : '' },
+      data: {
+        actionType: item == 'Create' ? 'Create' : 'Edit',
+        data: item != 'Create' ? item : '',
+      },
       width: '440px',
       height: 'auto',
-      disableClose: true
+      disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
   }
@@ -64,10 +90,8 @@ export class BlacklistComponent {
       data: { actionType: 'blacklist', data: item },
       width: '440px',
       height: 'auto',
-      disableClose: true
+      disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
   }
-
-
 }

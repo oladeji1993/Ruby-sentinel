@@ -2,6 +2,7 @@
   .rubby-logo {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
   }
   position: relative;
 
@@ -88,9 +89,9 @@
     }
   }
   .is-active {
-    background-color: rgba(215, 34, 106, 0.2);
+    background-color: rgba(43, 81, 166, 0.2);
     padding: 0.2rem;
-    color: rgba(215, 34, 106, 1);
+    color: rgba(43, 81, 166, 1);
     font-family: Inter;
     font-size: 14px;
     height: 48px;

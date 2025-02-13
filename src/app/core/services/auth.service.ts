@@ -15,11 +15,11 @@ export class AuthService {
   }
 
   updateTokenInStorage(newJwtToken: string): void {
-    localStorage.setItem('accessToken', newJwtToken);
+    localStorage.setItem('gapToken', newJwtToken);
   }
 
   public refreshTokenCall(): Observable<any> {
-    const savedToken: any = localStorage.getItem('refreshaccessToken');
+    const savedToken: any = localStorage.getItem('refreshGapToken');
     let data = {
       token: savedToken,
     };
@@ -32,7 +32,7 @@ export class AuthService {
 
   IsLoggedIn() {
     let bool: boolean;
-    let token = localStorage.getItem('accessToken');
+    let token = localStorage.getItem('gapToken');
     let isTokenVerified = localStorage.getItem('isTokenVerified');
     if (token && isTokenVerified) {
       bool = true;

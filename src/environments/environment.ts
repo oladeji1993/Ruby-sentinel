@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://9380-102-88-110-160.ngrok-free.app/api/RUBYSentinel',
+  apiBaseUrl: 'http://gap-api.apps.non-core-dev.sterlingbank.com/api/GAPSentinel',
   XApiKey: '2D6gqApezbU2aqJB',
   // baseUrl: 'https://sandboxapi-pilot.appsuport.p.azurewebsites.net/gateway/sandbox/api/',
   baseUrl: 'https://uat-gateway.sterling.ng/api/UserProfile',

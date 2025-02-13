@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   // baseUrl: 'https://encryptionmiddleware.sterlingapps.p.azurewebsites.net/gateway/sandbox/api/',
   // baseUrl: 'https://sandboxapi-pilot.appsuport.p.azurewebsites.net/gateway/sandbox/api/',
-  apiBaseUrl: 'https://9380-102-88-110-160.ngrok-free.app/api/RUBYSentinel',
+  apiBaseUrl: 'http://gap-api.apps.non-core-dev.sterlingbank.com/api/GAPSentinel',
   XApiKey: '2D6gqApezbU2aqJB',
   // XApiKey: 'pgH7QzFHJx4w46fI~5Uzi4RvtTwQsr',
   baseUrl: 'https://uat-gateway.sterling.ng/api/UserProfile',

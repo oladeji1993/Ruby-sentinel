@@ -78,6 +78,10 @@
   }
 }
 
+.mat-spinner-color::ng-deep circle {
+  stroke: #ffffff !important;
+}
+
 // .mat-spinner-color::ng-deep circle {
 //   stroke: #ffffff !important;
 // }

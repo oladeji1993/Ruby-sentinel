@@ -145,10 +145,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('userRight', tokenInfo?.Permission);
           localStorage.setItem('userId', userId);
           localStorage.setItem(
-            'refreshaccessToken',
+            'refreshGapToken',
             apiResponse?.value?.refreshToken
           );
-          localStorage.setItem('accessToken', apiResponse?.value?.accessToken);
+          localStorage.setItem('gapToken', apiResponse?.value?.accessToken);
           const sessionId = Math.random().toString(36).substring(2);
           sessionStorage.setItem('sessionId', sessionId);
           this.dialog.open(OtpComponent, {

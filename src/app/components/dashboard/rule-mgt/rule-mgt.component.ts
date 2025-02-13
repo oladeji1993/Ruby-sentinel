@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateStaticRuleComponent } from './create-static-rule/create-static-rule.component';
 import { DetailsComponent } from './details/details.component';
+import { RubyService } from 'src/app/core/services/ruby.service';
 
 @Component({
   selector: 'app-rule-mgt',
   templateUrl: './rule-mgt.component.html',
   styleUrls: ['./rule-mgt.component.scss'],
 })
-export class RuleMgtComponent {
+export class RuleMgtComponent implements OnInit {
   isEmpty: boolean = false;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private gap: RubyService) {}
 
   createRule(item: any) {
     let dialogRef = this.dialog.open(CreateStaticRuleComponent, {
@@ -28,6 +29,10 @@ export class RuleMgtComponent {
       disableClose: true,
     });
     // dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  ngOnInit(): void {
+    this.getAllRules();
   }
 
   rules = [
@@ -98,6 +103,22 @@ export class RuleMgtComponent {
       Status: 'Active',
     },
   ];
+
+  getAllRules() {
+    this.gap
+      .getApiResponseHandler(this.gap.getApiCallTemplate('Rules', 'GetAll'), '')
+      .subscribe({
+        next: (response) => {
+          console.log('Success:', response);          
+          // this.loading = false;
+          // Perform additional actions if needed
+        },
+        error: (error) => {
+          // this.loading = false;
+          console.error('Error:', error);
+        },
+      });
+  }
 
   veiwRuleDetails(item: any) {
     let dialogRef = this.dialog.open(DetailsComponent, {

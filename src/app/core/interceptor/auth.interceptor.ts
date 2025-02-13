@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
     const XApiKey = environment.XApiKey;
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('gapToken');
     if (token) {
       request = this.addToken(request, token);
     }
@@ -89,7 +89,7 @@ export class AuthInterceptor implements HttpInterceptor {
           const apiResponse: any = decryptLoginData(response?.response);   
           
           const newToken: any = apiResponse?.value?.accessToken;
-          localStorage.setItem('refreshaccessToken', apiResponse?.value?.refreshToken)
+          localStorage.setItem('refreshGapToken', apiResponse?.value?.refreshToken)
 
           // const newRefreshToken = response?.data?.refreshToken;
           this.isRefreshing = false;
