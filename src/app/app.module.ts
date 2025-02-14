@@ -14,7 +14,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [AppComponent, DeleteModalComponent, SuccessModalComponent],
+  declarations: [AppComponent, SuccessModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

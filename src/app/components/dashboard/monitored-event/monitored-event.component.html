@@ -59,14 +59,14 @@
               >
                 No record Found
               </div> -->
-            <ng-container *ngFor="let event of events">
+            <ng-container *ngFor="let event of allMonitoredEvents">
               <tr>
-                <td>{{ event.title }}</td>
+                <td>{{ event?.name }}</td>
                 <td>
-                  <span class="event_key">{{ event.event }}</span>
+                  <span class="event_key">{{ event?.keyWord }}</span>
                 </td>
-                <td>{{ event.category }}</td>
-                <td>{{ event.description }}</td>
+                <td>{{ event?.type }}</td>
+                <td>{{ event?.description }}</td>
                 <td>
                   <img
                     class="more-options"
@@ -95,6 +95,7 @@
             </ng-container>
           </tbody>
         </table>
+        <app-table-loader *ngIf="tableLoader"></app-table-loader>
       </div>
     </div>
   </div>

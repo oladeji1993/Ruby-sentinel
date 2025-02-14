@@ -86,20 +86,19 @@ export class AuthInterceptor implements HttpInterceptor {
       this.refreshTokenSubject.next(null);
       return this.authService.refreshTokenCall().pipe(
         switchMap((response) => {
-          const apiResponse: any = decryptLoginData(response?.response);   
-          
+          const apiResponse: any = decryptLoginData(response?.response);             
           const newToken: any = apiResponse?.value?.accessToken;
+          if (!newToken) {
+            return throwError(
+              'New token or refresh token not found in the response.'
+            );
+          }
           localStorage.setItem('refreshGapToken', apiResponse?.value?.refreshToken)
 
           // const newRefreshToken = response?.data?.refreshToken;
           this.isRefreshing = false;
           this.refreshTokenSubject.next(newToken);
 
-          if (!newToken) {
-            return throwError(
-              'New token or refresh token not found in the response.'
-            );
-          }
           // this.generalService.appLoader(false);
           this.authService.updateTokenInStorage(newToken); // Update tokens in local storage
           return next.handle(this.addToken(request, newToken));

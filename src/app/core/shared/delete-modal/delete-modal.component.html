@@ -1,6 +1,10 @@
 <div class="delete">
   <div class="close">
-    <img (click)="closeModal('close')" src="/assets/images/dashboard/close.svg" alt="" />
+    <img
+      (click)="closeModal(false)"
+      src="/assets/images/dashboard/close.svg"
+      alt=""
+    />
   </div>
   <div class="content form-container">
     <div>
@@ -8,15 +12,17 @@
 
       <!-- <div>“Event Delete”</div> -->
       <div>Are you sure you want to delete this {{ data?.actionType }}:</div>
-      <div class="item-name" *ngIf="data?.actionType == 'user'">{{ data?.data?.userName}}</div>
-      <div *ngIf="data?.actionType !== 'user'" class="input-container">
+      <div class="item-name" *ngIf="data?.actionType == 'user'">
+        {{ data?.data?.userName }}
+      </div>
+      <!-- <div *ngIf="data?.actionType !== 'user'" class="input-container">
         <label class="label" for="email"> Select a reason </label>
         <select>
           <option value="">Select a reason</option>
           <option value="Expired">expired</option>
           <option value="Stale">Stale</option>
         </select>
-      </div>
+      </div> -->
 
       <div class="buttons">
         <div>
@@ -25,14 +31,14 @@
           </button>
         </div>
         <div>
-          <button type="submit" class="delete-btn">
-            <span> Delete </span>
+          <button (click)="deleteItem()" type="submit" class="delete-btn">
+            <span *ngIf="!loader"> Delete </span>
             <span class="flex justify-center">
-              <!-- <mat-spinner
-                    *ngIf="loading"
-                    diameter="21"
-                    class="mat-spinner-color"
-                  ></mat-spinner> -->
+              <mat-spinner
+                *ngIf="loader"
+                diameter="21"
+                class="mat-spinner-color"
+              ></mat-spinner>
             </span>
           </button>
         </div>

@@ -9,7 +9,7 @@
       <div class="filter-dropdown">
         <div class="input-container">
           <select (change)="actionType($event)" style="width: 100%">
-          <option></option>
+            <option></option>
             <option value="channel">Channel</option>
             <option value="bank">Bank</option>
             <option value="transaction">Transaction Type</option>
@@ -46,7 +46,163 @@
 
   <div class="main-container">
     <div class="content">
-      <div class="table-container">
+      <div
+        *ngIf="selectedConfigurationType === 'channel'"
+        class="table-container"
+      >
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <td>Channel Name</td>
+                <td>Channel Code</td>
+                <td>Description</td>
+                <td>Edit</td>
+                <td>Del...</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <div
+                        class="no-record"
+                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                      >
+                        No record Found
+                      </div> -->
+              <ng-container *ngFor="let item of allAvailableChannels">
+                <tr>
+                  <td>{{ item?.name }}</td>
+                  <td>
+                    <span>{{ item?.code }}</span>
+                  </td>
+                  <td>{{ item.description }}</td>
+                  <td>
+                    <img
+                      (click)="createConfiguration(item)"
+                      src="/assets/images/dashboard/edit.svg"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          <app-table-loader *ngIf="tableLoader"></app-table-loader>
+        </div>
+      </div>
+
+      <!-- Bank view -->
+      <div class="table-container" *ngIf="selectedConfigurationType === 'bank'">
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <td>Bank Name</td>
+                <td>Bank Code</td>
+                <td>Description</td>
+                <td>Edit</td>
+                <td>Del...</td>
+              </tr>
+            </thead>
+            <div
+              class="no-record"
+              *ngIf="allAvailableBanks?.length == 0 && !bankTableLoader"
+            >
+              No record Found
+            </div>
+            <tbody *ngIf="bankTableLoader == false && allAvailableBanks">
+              <ng-container *ngFor="let item of allAvailableBanks">
+                <tr>
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <span>{{ item.code }}</span>
+                  </td>
+                  <td>{{ item.description }}</td>
+                  <td>
+                    <img
+                      (click)="createConfiguration(item)"
+                      src="/assets/images/dashboard/edit.svg"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          <app-table-loader *ngIf="bankTableLoader"></app-table-loader>
+        </div>
+      </div>
+
+      <!-- Transaction view -->
+      <div
+        class="table-container"
+        *ngIf="selectedConfigurationType === 'transaction'"
+      >
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <td>Transaction Type Name</td>
+                <td>Transaction Type Code</td>
+                <td>Description</td>
+                <td>Edit</td>
+                <td>Del...</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <div
+                        class="no-record"
+                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
+                      >
+                        No record Found
+                      </div> -->
+              <ng-container *ngFor="let item of allAvailableTransactions">
+                <tr>
+                  <td>{{ item?.name }}</td>
+                  <td>
+                    <span>{{ item?.code }}</span>
+                  </td>
+                  <td>{{ item?.description }}</td>
+                  <td>
+                    <img
+                      (click)="createConfiguration(item)"
+                      src="/assets/images/dashboard/edit.svg"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          <app-table-loader *ngIf="transactionTableLoader"></app-table-loader>
+        </div>
+      </div>
+
+      <!-- Currency view -->
+      <div
+        class="table-container"
+        *ngIf="selectedConfigurationType === 'currency'"
+      >
         <div style="overflow-x: auto">
           <table>
             <thead>
@@ -65,23 +221,32 @@
                       >
                         No record Found
                       </div> -->
-              <ng-container *ngFor="let item of items">
+              <ng-container *ngFor="let item of allAvailableCurrency">
                 <tr>
-                  <td>{{ item.channelName }}</td>
+                  <td>{{ item.name }}</td>
                   <td>
-                    <span>{{ item.channelCode }}</span>
+                    <span>{{ item.code }}</span>
                   </td>
                   <td>{{ item.description }}</td>
                   <td>
-                    <img (click)="createConfiguration(item)" src="/assets/images/dashboard/edit.svg" alt="" />
+                    <img
+                      (click)="createConfiguration(item)"
+                      src="/assets/images/dashboard/edit.svg"
+                      alt=""
+                    />
                   </td>
                   <td>
-                    <img (click)="deleteModal(item)" src="/assets/images/dashboard/delete.svg" alt="" />
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
                   </td>
                 </tr>
               </ng-container>
             </tbody>
           </table>
+          <app-table-loader *ngIf="currencyTableLoader"></app-table-loader>
         </div>
       </div>
     </div>

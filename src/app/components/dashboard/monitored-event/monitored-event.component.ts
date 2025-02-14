@@ -19,6 +19,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MonitoredEventComponent implements OnInit {
   loader: boolean = false;
   allRetrivedEvents: any;
+  allMonitoredEvents: any;
+  tableLoader: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -30,18 +32,20 @@ export class MonitoredEventComponent implements OnInit {
     this.getAllEvents();
   }
 
-
   getAllEvents() {
+    this.tableLoader = true;
     this.rubyService
-      .getApiResponseHandler(this.rubyService.getApiCallTemplate('Events', 'GetAll'), '')
+      .getApiResponseHandler(
+        this.rubyService.getApiCallTemplate('Events', 'GetAll'),
+        ''
+      )
       .subscribe({
-        next: (response) => {
-          console.log('Success:', response);          
-          // this.loading = false;
-          // Perform additional actions if needed
+        next: (response) => {          
+          this.allMonitoredEvents = response?.value;
+          this.tableLoader = false;
         },
         error: (error) => {
-          // this.loading = false;
+          this.tableLoader = false;
           console.error('Error:', error);
         },
       });
@@ -148,7 +152,11 @@ export class MonitoredEventComponent implements OnInit {
       height: 'auto',
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if(res?.data == true){
+        this.getAllEvents();
+      }
+    });
   }
 
   deleteModal(item: any) {
@@ -159,32 +167,11 @@ export class MonitoredEventComponent implements OnInit {
       height: 'auto',
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
-  }
-
-  private getApiResponseHandler(observable: Observable<any>, item: any): any {
-    this.loader = true;
-    observable.subscribe({
-      next: (res: any) => {
-        const apiResponse: any = decryptUserData(res?.response);
-        if (apiResponse.isSuccess == true) {
-          this.loader = false;
-          this.allRetrivedEvents = apiResponse?.value?.events;
-        } else {
-          this.loader = false;
-          errorNotifier(this.snackBar, apiResponse.responseDescription);
-        }
-        this.loader = false;
-      },
-      error: (error: any) => {
-        this.loader = false;
-        this.loader = false;
-        errorNotifier(this.snackBar, 'unable to process');
-      },
-      complete: () => {
-        this.loader = false;
-        console.log('Response returned');
-      },
+    dialogRef.afterClosed().subscribe((res:any) => {
+      this.getAllEvents();
     });
   }
+
+
+ 
 }

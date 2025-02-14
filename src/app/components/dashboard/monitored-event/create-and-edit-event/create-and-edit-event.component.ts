@@ -40,9 +40,9 @@ export class CreateAndEditEventComponent implements OnInit {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        eventCategory: this.data.data?.category,
-        eventName: this.data.data?.event,
-        eventTitle: this.data.data?.title,
+        eventCategory: this.data.data?.type,
+        eventName: this.data.data?.name,
+        eventTitle: this.data.data?.keyWord,
         description: this.data.data?.description,
       };
       this.eventForm.patchValue(matchedPayload);
@@ -93,7 +93,7 @@ export class CreateAndEditEventComponent implements OnInit {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__zoomOut');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 
@@ -102,65 +102,34 @@ export class CreateAndEditEventComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     } else {
+      this.loader = true;
       const { eventCategory, eventName, eventTitle, description } =
         this.eventForm.value;
       let data = {
-        id: null,
+        id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
         name: eventName,
         keyWord: eventTitle,
         category: eventCategory,
         description: description,
-      };
+      };      
       let payload = encryptUserData(data);
-      console.log(payload);
-      
-      this.requestSubscription = this.postApiResponseHandler(
-        this.rubyService.postApiCallTemplate('Events', 'AddOrUpdate', {
-          request: payload,
-        }),
-        item
-      );
+      this.rubyService
+        .ApiResponseHandler(
+          this.rubyService.postApiCallTemplate('Events', 'AddOrUpdate', {
+            request: payload,
+          }),
+          'Event', this.data?.actionType
+        )
+        .subscribe({
+          next: (response) => {
+            this.closeModal(true)
+            this.loader = false;
+          },
+          error: (error) => {
+            this.loader = false;
+            console.error('Error:', error);
+          },
+        });
     }
-  }
-
-  private postApiResponseHandler(observable: Observable<any>, item: any): any {
-    this.loader = true;
-    observable.subscribe({
-      next: (res: any) => {
-        const apiResponse: any = decryptUserData(res?.response);
-        if (apiResponse.isSuccess == true) {
-          this.loader = false;
-          this.closeModal('');
-          let dialogRef = this.dialog.open(SuccessModalComponent, {
-            panelClass: [
-              'animate__animated',
-              'animate__zoomIn',
-              'custom-modalbox',
-            ],
-            // data: { actionType: 'Event', data: item },
-            data: {
-              actionType: item == 'Create' ? 'Create' : 'Edit',
-              data: item != 'Create' ? item : '',
-            },
-            width: '440px',
-            height: 'auto',
-            disableClose: true,
-          });
-        } else {
-          this.loader = false;
-          errorNotifier(this.snackBar, apiResponse.responseDescription);
-        }
-        this.loader = false;
-      },
-      error: (error: any) => {
-        this.loader = false;
-        this.loader = false;
-        errorNotifier(this.snackBar, 'unable to process');
-      },
-      complete: () => {
-        this.loader = false;
-        console.log('Response returned');
-      },
-    });
   }
 }

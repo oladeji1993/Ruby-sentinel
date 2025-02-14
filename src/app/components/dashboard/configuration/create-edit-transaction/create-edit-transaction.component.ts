@@ -1,6 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { RubyService } from 'src/app/core/services/ruby.service';
 import { encryptUserData } from 'src/app/core/utils/helpers';
 
@@ -82,29 +86,28 @@ export class CreateEditTransactionComponent {
       return;
     } else {
       this.loading = true;
-      const { transactionName, transactionCode, description } = this.transactionForm.value;
+      const { transactionName, transactionCode, description } =
+        this.transactionForm.value;
       let data = {
-        id: null,
+        id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
         name: transactionName,
         code: transactionCode,
         description: description,
       };
       let payload = encryptUserData(data);
       this.rubyService
-        .postApiResponseHandler(
-          this.rubyService.postApiCallTemplate(
-            'Transactions',
-            'AddOrUpdate',
-            // {request: payload}
-            data
-          ),
-          item
+        .ApiResponseHandler(
+          this.rubyService.postApiCallTemplate('TransactionType', 'AddOrUpdate', {
+            request: payload,
+          }),
+          'transation',
+          this.data?.actionType
         )
         .subscribe({
           next: (response) => {
             console.log('Success:', response);
             this.loading = false;
-            // Perform additional actions if needed
+            this.closeModal(true)
           },
           error: (error) => {
             this.loading = false;

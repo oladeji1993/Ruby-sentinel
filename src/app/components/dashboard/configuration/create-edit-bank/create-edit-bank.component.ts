@@ -82,29 +82,28 @@ export class CreateEditBankComponent {
       return;
     } else {
       this.loading = true;
-      const { channelName, channelCode, description } = this.bankForm.value;
+      const { bankName, bankCode, description } = this.bankForm.value;
       let data = {
-        id: null,
-        name: channelName,
-        code: channelCode,
+        id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
+        name: bankName,
+        code: bankCode,
         description: description,
       };
       let payload = encryptUserData(data);
       this.rubyService
-        .postApiResponseHandler(
+        .ApiResponseHandler(
           this.rubyService.postApiCallTemplate(
             'Banks',
             'AddOrUpdate',
-            // {request: payload}
-            data
+            {request: payload}
           ),
-          item
+          'bank', this.data?.actionType
         )
         .subscribe({
           next: (response) => {
             console.log('Success:', response);
             this.loading = false;
-            // Perform additional actions if needed
+            this.closeModal(true)
           },
           error: (error) => {
             this.loading = false;

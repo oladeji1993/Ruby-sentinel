@@ -82,7 +82,7 @@ export class CreateEditConfigurationComponent {
     }, 700);
   }
 
-  createEvent(item: any) {
+  createAndUpdateChannel(item: any) {
     this.submitted = true;
     if (this.channelForm.invalid) {
       return;
@@ -90,28 +90,24 @@ export class CreateEditConfigurationComponent {
       this.loading = true;
       const { channelName, channelCode, description } = this.channelForm.value;
       let data = {
-        id: '09b9bda1-5cf1-416e-aa43-bb40c81e55c3',
+        id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
         name: channelName,
         code: channelCode,
         description: description,
-      };
-      console.log(data);
-      
+      };      
       let payload = encryptUserData(data);
       this.rubyService
-        .postApiResponseHandler(
+        .ApiResponseHandler(
           this.rubyService.postApiCallTemplate(
             'Channels',
             'AddOrUpdate',
             {request: payload}
           ),
-          item
+          'channels', this.data?.actionType
         )
         .subscribe({
           next: (response) => {
-            console.log('Success:', response);
-            this.loading = false;
-            // Perform additional actions if needed
+           this.closeModal(true)
           },
           error: (error) => {
             this.loading = false;

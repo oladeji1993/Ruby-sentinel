@@ -8,10 +8,11 @@
   </div>
   <div class="content form-container">
     <div>
-      <div class="title">New {{ data?.actionType}} Added</div>
-
+      <div *ngIf="data.apiAction == 'Create'" class="title">New {{ data?.actionType}} Added</div>
+      <div *ngIf="data.apiAction == 'Edit'" class="title">{{ data?.actionType}} update</div>
+      <div *ngIf="data.apiAction == 'Delete'" class="title">{{ data?.actionType}} delete</div>
       <img src="/assets/images/dashboard/success-icon.svg" alt="" />
-      <div>Successfully Added a new {{ data?.actionType}}</div>
+      <div>{{ data?.actionMessage}}</div>
 
       <div class="buttons">
         <!-- <div>

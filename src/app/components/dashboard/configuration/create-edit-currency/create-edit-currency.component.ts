@@ -49,15 +49,15 @@ export class CreateEditCurrencyComponent {
 
   getErrorMessage(instance: string) {
     if (
-      instance === 'channelName' &&
-      this.currencyFormControl['channelName'].hasError('required')
+      instance === 'currencyName' &&
+      this.currencyFormControl['currencyName'].hasError('required')
     ) {
-      return 'Channel name is required';
+      return 'Currency name is required';
     } else if (
-      instance === 'channelCode' &&
-      this.currencyFormControl['channelCode'].hasError('required')
+      instance === 'currencyCode' &&
+      this.currencyFormControl['currencyCode'].hasError('required')
     ) {
-      return 'Channel code is required';
+      return 'Currency code is required';
     } else if (
       instance === 'description' &&
       this.currencyFormControl['description'].hasError('required')
@@ -85,27 +85,25 @@ export class CreateEditCurrencyComponent {
       this.loading = true;
       const { channelName, channelCode, description } = this.currencyForm.value;
       let data = {
-        id: null,
+        id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
         name: channelName,
         code: channelCode,
         description: description,
       };
       let payload = encryptUserData(data);
       this.rubyService
-        .postApiResponseHandler(
+        .ApiResponseHandler(
           this.rubyService.postApiCallTemplate(
             'Currency',
             'AddOrUpdate',
-            // {request: payload}
-            data
+            {request: payload}
           ),
-          item
+          'currency',this.data.actionType
         )
         .subscribe({
           next: (response) => {
-            console.log('Success:', response);
+            this.closeModal(true)
             this.loading = false;
-            // Perform additional actions if needed
           },
           error: (error) => {
             this.loading = false;

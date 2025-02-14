@@ -140,7 +140,7 @@ export class LoginComponent implements OnInit {
             tokenInfo[
               'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
             ];
-          this.loader = false;
+          this.loader = false;          
           localStorage.setItem('loggedInUserEmail', email);
           localStorage.setItem('userRight', tokenInfo?.Permission);
           localStorage.setItem('userId', userId);

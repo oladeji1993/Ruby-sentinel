@@ -7,20 +7,20 @@
     />
   </div>
   <div class="header">
-    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Transaction Type
+    {{ data.actionType == "Create" ? "Create New" : "Edit" }} Currency Type
   </div>
   <div class="sub-header">
     Please fill in the details to
-    {{ data.actionType == "Create" ? "create a new " : "edit" }} Transaction
+    {{ data.actionType == "Create" ? "create a new " : "edit" }} Currency
     Type.
   </div>
 
   <form [formGroup]="currencyForm">
     <div class="form-container">
       <div class="input-container">
-        <label class="label" for="email"> Transaction Type Name </label>
+        <label class="label" for="email"> Currency Type Name </label>
         <input
-          formControlName="transactionName"
+          formControlName="currencyName"
           matInput
           class="custom-input form-control"
           type="text"
@@ -29,8 +29,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (currencyFormControl['transactionName'].touched || submitted) &&
-            currencyFormControl['transactionName']?.invalid
+            (currencyFormControl['currencyName']?.touched || submitted) &&
+            currencyFormControl['currencyName']?.invalid
           "
         >
           <img
@@ -38,14 +38,14 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("transactionName") }}
+          {{ getErrorMessage("currencyName") }}
         </mat-error>
       </div>
 
       <div class="input-container">
-        <label class="label" for="email"> Transaction Type Code </label>
+        <label class="label" for="email"> Currency Type Code </label>
         <input
-          formControlName="transanctionCode"
+          formControlName="currencyCode"
           matInput
           class="custom-input form-control"
           type="text"
@@ -54,8 +54,8 @@
         <mat-error
           class="alert"
           *ngIf="
-            (currencyFormControl['transanctionCode'].touched || submitted) &&
-            currencyFormControl['transanctionCode']?.invalid
+            (currencyFormControl['currencyCode']?.touched || submitted) &&
+            currencyFormControl['currencyCode']?.invalid
           "
         >
           <img
@@ -63,7 +63,7 @@
             alt=""
             class="img-fluid error-icon"
           />
-          {{ getErrorMessage("transanctionCode") }}
+          {{ getErrorMessage("currencyCode") }}
         </mat-error>
       </div>
 
@@ -78,7 +78,7 @@
         <mat-error
           class="alert"
           *ngIf="
-            (currencyFormControl['description'].touched || submitted) &&
+            (currencyFormControl['description']?.touched || submitted) &&
             currencyFormControl['description']?.invalid
           "
         >
