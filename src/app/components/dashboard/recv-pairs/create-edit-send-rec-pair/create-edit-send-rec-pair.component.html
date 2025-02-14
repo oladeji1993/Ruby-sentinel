@@ -14,7 +14,7 @@
     {{ data.actionType == "Create" ? "add a new" : "edit" }} item.
   </div>
 
-  <form [formGroup]="eventForm">
+  <form [formGroup]="eventForm" (ngSubmit)="createAndUpdate()">
     <div class="form-container">
       <div class="input-container">
         <label class="label" for="email"> Sender Account Number </label>
@@ -24,6 +24,13 @@
           class="custom-input form-control"
           type="text"
         />
+        <mat-error
+          class="alert"
+          *ngIf="(eventFormControl['senderAccount'].touched || submitted) && eventFormControl['senderAccount']?.invalid"
+        >
+          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
+          {{ getErrorMessage('senderAccount') }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -34,6 +41,13 @@
           class="custom-input form-control"
           type="text"
         />
+        <mat-error
+          class="alert"
+          *ngIf="(eventFormControl['receiverAccount'].touched || submitted) && eventFormControl['receiverAccount']?.invalid"
+        >
+          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
+          {{ getErrorMessage('receiverAccount') }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -43,6 +57,13 @@
           <option value="accounts">UBA</option>
           <option value="bvn">Sterling Bank</option>
         </select>
+        <mat-error
+          class="alert"
+          *ngIf="(eventFormControl['eventCategory'].touched || submitted) && eventFormControl['eventCategory']?.invalid"
+        >
+          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
+          {{ getErrorMessage('eventCategory') }}
+        </mat-error>
       </div>
 
       <div class="input-container">
@@ -53,6 +74,13 @@
           rows="10"
           cols="50"
         ></textarea>
+        <mat-error
+          class="alert"
+          *ngIf="(eventFormControl['description'].touched || submitted) && eventFormControl['description']?.invalid"
+        >
+          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
+          {{ getErrorMessage('description') }}
+        </mat-error>
       </div>
 
       <div class="buttons">
@@ -63,7 +91,6 @@
         </div>
         <div>
           <button
-            (click)="createEvent('create')"
             type="submit"
             class="action-btn"
           >
@@ -71,11 +98,11 @@
               >{{ data.actionType == "Create" ? "Create" : "Update" }}
             </span>
             <span class="flex justify-center">
-              <!-- <mat-spinner
-                    *ngIf="loading"
+              <mat-spinner
+                    *ngIf="loader"
                     diameter="21"
                     class="mat-spinner-color"
-                  ></mat-spinner> -->
+                  ></mat-spinner>
             </span>
           </button>
         </div>
