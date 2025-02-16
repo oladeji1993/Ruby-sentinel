@@ -25,10 +25,10 @@ export class CreateEditCurrencyComponent {
 
   ngOnInit(): void {
     this.initializeForm();
-    if (this.data?.data !== '') {
+    if (this.data?.data !== '') {      
       let matchedPayload = {
-        currencyName: this.data.data?.channelName,
-        currencyCode: this.data.data?.channelCode,
+        currencyName: this.data.data?.name,
+        currencyCode: this.data.data?.code,
         description: this.data.data?.description,
       };
       this.currencyForm.patchValue(matchedPayload);
@@ -73,7 +73,7 @@ export class CreateEditCurrencyComponent {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__zoomOut');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 
@@ -83,13 +83,18 @@ export class CreateEditCurrencyComponent {
       return;
     } else {
       this.loading = true;
-      const { channelName, channelCode, description } = this.currencyForm.value;
+      const { currencyName, currencyCode, description } = this.currencyForm.value;
+      console.log(this.currencyForm.value);
+
       let data = {
         id: this.data?.actionType == 'Edit' ? this.data?.data?.id : null,
-        name: channelName,
-        code: channelCode,
+        name: currencyName,
+        code: currencyCode,
         description: description,
       };
+
+      console.log(data);
+      
       let payload = encryptUserData(data);
       this.rubyService
         .ApiResponseHandler(

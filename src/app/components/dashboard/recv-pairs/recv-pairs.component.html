@@ -8,7 +8,7 @@
       <!-- <div class="view">View:</div> -->
       <div class="filter-dropdown">
         <div class="input-container">
-          <select formControlName="apiType" style="width: 100%">
+          <select style="width: 100%">
             <option>All Types</option>
             <option>Timed event</option>
           </select>
@@ -59,24 +59,27 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <div
-                        class="no-record"
-                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                      >
-                        No record Found
-                      </div> -->
-              <ng-container *ngFor="let item of items">
+              <div
+                class="no-record"
+                *ngIf="
+                  (allrecvPairlist == null || allrecvPairlist == undefined) &&
+                  !tableLoader
+                "
+              >
+                No record Found
+              </div>
+              <ng-container *ngFor="let item of allrecvPairlist">
                 <tr>
-                  <td>{{ item.senderAccount }}</td>
+                  <td>{{ item?.sender }}</td>
                   <td>
-                    <span>{{ item.recepientAccount }}</span>
+                    <span>{{ item?.recepientBank }}</span>
                   </td>
                   <td>
-                    <span>{{ item.code }}</span>
+                    <span>{{ item?.code }}</span>
                   </td>
-                  <td>{{ item.description }}</td>
-                  <td>{{ item.createdBy }}</td>
-                  <td>{{ item.date }}</td>
+                  <td>{{ item?.description }}</td>
+                  <td>{{ item?.createdBy }}</td>
+                  <td>{{ item?.dateCreated | date : "dd/MM/yyyy" }}</td>
                   <td>
                     <img
                       (click)="createAndEdit(item)"
@@ -95,6 +98,7 @@
               </ng-container>
             </tbody>
           </table>
+          <app-table-loader *ngIf="tableLoader"></app-table-loader>
         </div>
       </div>
     </div>

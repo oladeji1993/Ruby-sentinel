@@ -26,10 +26,17 @@
         />
         <mat-error
           class="alert"
-          *ngIf="(eventFormControl['senderAccount'].touched || submitted) && eventFormControl['senderAccount']?.invalid"
+          *ngIf="
+            (eventFormControl['senderAccount'].touched || submitted) &&
+            eventFormControl['senderAccount']?.invalid
+          "
         >
-          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
-          {{ getErrorMessage('senderAccount') }}
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("senderAccount") }}
         </mat-error>
       </div>
 
@@ -43,10 +50,17 @@
         />
         <mat-error
           class="alert"
-          *ngIf="(eventFormControl['receiverAccount'].touched || submitted) && eventFormControl['receiverAccount']?.invalid"
+          *ngIf="
+            (eventFormControl['receiverAccount'].touched || submitted) &&
+            eventFormControl['receiverAccount']?.invalid
+          "
         >
-          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
-          {{ getErrorMessage('receiverAccount') }}
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("receiverAccount") }}
         </mat-error>
       </div>
 
@@ -59,10 +73,17 @@
         </select>
         <mat-error
           class="alert"
-          *ngIf="(eventFormControl['eventCategory'].touched || submitted) && eventFormControl['eventCategory']?.invalid"
+          *ngIf="
+            (eventFormControl['eventCategory'].touched || submitted) &&
+            eventFormControl['eventCategory']?.invalid
+          "
         >
-          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
-          {{ getErrorMessage('eventCategory') }}
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("eventCategory") }}
         </mat-error>
       </div>
 
@@ -76,10 +97,17 @@
         ></textarea>
         <mat-error
           class="alert"
-          *ngIf="(eventFormControl['description'].touched || submitted) && eventFormControl['description']?.invalid"
+          *ngIf="
+            (eventFormControl['description'].touched || submitted) &&
+            eventFormControl['description']?.invalid
+          "
         >
-          <img src="/assets/icons/error.svg" alt="" class="img-fluid error-icon" />
-          {{ getErrorMessage('description') }}
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("description") }}
         </mat-error>
       </div>
 
@@ -90,19 +118,16 @@
           </button>
         </div>
         <div>
-          <button
-            type="submit"
-            class="action-btn"
-          >
-            <span
+          <button type="submit" class="action-btn">
+            <span *ngIf="!loader"
               >{{ data.actionType == "Create" ? "Create" : "Update" }}
             </span>
             <span class="flex justify-center">
               <mat-spinner
-                    *ngIf="loader"
-                    diameter="21"
-                    class="mat-spinner-color"
-                  ></mat-spinner>
+                *ngIf="loader"
+                diameter="21"
+                class="mat-spinner-color"
+              ></mat-spinner>
             </span>
           </button>
         </div>

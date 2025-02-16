@@ -20,10 +20,10 @@ export class ConfigurationComponent implements OnInit {
   bankTableLoader: any;
   allAvailableChannels: any;
   allAvailableBanks: any;
-  transactionTableLoader: any = false
-  allAvailableTransactions: any
+  transactionTableLoader: any = false;
+  allAvailableTransactions: any;
   allAvailableCurrency: any;
-  currencyTableLoader: any  = false;
+  currencyTableLoader: any = false;
 
   constructor(
     private dialog: MatDialog,
@@ -87,23 +87,53 @@ export class ConfigurationComponent implements OnInit {
         height: 'auto',
         disableClose: true,
       });
-      dialogRef.afterClosed().subscribe((res: any) => {
-        if(res.data == true){
-          this.getAllTransactions();
-        }
-      });
     }
+    dialogRef.afterClosed().subscribe((res: any) => {
+      console.log(res);
+      
+      if (res.data == true) {
+        switch (this.selectedConfigurationType) {
+          case 'bank':
+            this.getAllbanks();
+            break;
+          case 'channel':
+            this.getAllchannels();
+            break;
+          case 'transaction':
+            this.getAllTransactions();
+            break;
+          default:
+            this.getAllCurrency();
+        }
+      }
+    });
   }
 
   deleteModal(item: any) {
     let dialogRef = this.dialog.open(DeleteModalComponent, {
       panelClass: ['animate__animated', 'animate__zoomIn', 'custom-modalbox'],
-      data: { actionType: 'channel', data: item },
+      data: { actionType: this.selectedConfigurationType, data: item },
       width: '440px',
       height: 'auto',
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res.data == true) {
+        switch (this.selectedConfigurationType) {
+          case 'bank':
+            this.getAllbanks();
+            break;
+          case 'channel':
+            this.getAllchannels();
+            break;
+          case 'transaction':
+            this.getAllTransactions();
+            break;
+          default:
+            this.getAllCurrency();
+        }
+      }
+    });
   }
 
   actionType(item: any) {
@@ -177,6 +207,7 @@ export class ConfigurationComponent implements OnInit {
         },
       });
   }
+  
   getAllCurrency() {
     this.currencyTableLoader = true;
     this.rubyService
@@ -185,7 +216,7 @@ export class ConfigurationComponent implements OnInit {
         ''
       )
       .subscribe({
-        next: (response) => {          
+        next: (response) => {
           this.allAvailableCurrency = response?.value;
           this.currencyTableLoader = false;
         },

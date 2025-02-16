@@ -11,6 +11,8 @@ import { RubyService } from 'src/app/core/services/ruby.service';
 })
 export class RuleMgtComponent implements OnInit {
   isEmpty: boolean = false;
+  allRules: any;
+  tableLoader: boolean = false;
 
   constructor(private dialog: MatDialog, private gap: RubyService) {}
 
@@ -109,12 +111,13 @@ export class RuleMgtComponent implements OnInit {
       .getApiResponseHandler(this.gap.getApiCallTemplate('Rules', 'GetAll'), '')
       .subscribe({
         next: (response) => {
-          console.log('Success:', response);          
-          // this.loading = false;
-          // Perform additional actions if needed
+          this.allRules = response.value
+          console.log(this.allRules);
+          
+          this.tableLoader = false;
         },
         error: (error) => {
-          // this.loading = false;
+          this.tableLoader = false;
           console.error('Error:', error);
         },
       });

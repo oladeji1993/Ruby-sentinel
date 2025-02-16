@@ -78,7 +78,6 @@ export class RubyService {
             observer.next(apiResponse); // Emit the response
             observer.complete();
           } else {
-            // this.setLoaderStatus(false);
             errorNotifier(this.snackBar, apiResponse.responseDescription);
             observer.error(apiResponse); // Emit error response
           }
@@ -110,7 +109,8 @@ export class RubyService {
             observer.next(apiResponse);
             observer.complete();
           } else {
-            errorNotifier(this.snackBar, apiResponse.responseDescription);
+            observer.next(apiResponse);
+            // errorNotifier(this.snackBar, apiResponse.responseDescription);
             observer.error(apiResponse); // Emit error response
           }
         },

@@ -53,12 +53,15 @@
             </tr>
           </thead>
           <tbody>
-            <!-- <div
-                class="no-record"
-                *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-              >
-                No record Found
-              </div> -->
+            <div
+              class="no-record"
+              *ngIf="
+                (allMonitoredEvents == null || allMonitoredEvents == undefined) &&
+                !tableLoader
+              "
+            >
+              No record Found
+            </div>
             <ng-container *ngFor="let event of allMonitoredEvents">
               <tr>
                 <td>{{ event?.name }}</td>

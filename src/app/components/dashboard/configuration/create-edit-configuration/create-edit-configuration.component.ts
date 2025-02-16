@@ -32,8 +32,8 @@ export class CreateEditConfigurationComponent {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        channelName: this.data.data?.channelName,
-        channelCode: this.data.data?.channelCode,
+        channelName: this.data.data?.name,
+        channelCode: this.data.data?.code,
         description: this.data.data?.description,
       };
       this.channelForm.patchValue(matchedPayload);
@@ -78,7 +78,7 @@ export class CreateEditConfigurationComponent {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__zoomOut');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 

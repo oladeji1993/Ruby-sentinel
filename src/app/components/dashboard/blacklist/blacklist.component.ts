@@ -10,6 +10,8 @@ import { RubyService } from 'src/app/core/services/ruby.service';
   styleUrls: ['./blacklist.component.scss'],
 })
 export class BlacklistComponent implements OnInit {
+  allBlacklist: any;
+  tableLoader: any;
   constructor(private dialog: MatDialog, private gap: RubyService) {}
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class BlacklistComponent implements OnInit {
   ];
 
   getAllBlacklist() {
+    this.tableLoader = true;
     this.gap
       .getApiResponseHandler(
         this.gap.getApiCallTemplate('Blacklist', 'GetAll'),
@@ -59,12 +62,11 @@ export class BlacklistComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          console.log('Success:', response);
-          // this.loading = false;
-          // Perform additional actions if needed
+          this.allBlacklist = response?.value;
+          this.tableLoader = false;
         },
         error: (error) => {
-          // this.loading = false;
+          this.tableLoader = false;
           console.error('Error:', error);
         },
       });
@@ -81,7 +83,11 @@ export class BlacklistComponent implements OnInit {
       height: 'auto',
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res?.data == true) {
+        this.getAllBlacklist();
+      }
+    });
   }
 
   deleteModal(item: any) {
@@ -92,6 +98,10 @@ export class BlacklistComponent implements OnInit {
       height: 'auto',
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res?.data == true) {
+        this.getAllBlacklist();
+      }
+    });
   }
 }

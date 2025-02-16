@@ -76,18 +76,18 @@ export class CreateEditSendRecPairComponent implements OnInit {
       const { senderAccount, receiverAccount, eventCategory, description } = this.eventForm.value;
       let data = {
         id: this.data?.actionType === 'Edit' ? this.data?.data?.id : null,
-        senderAccount,
-        receiverAccount,
-        category: eventCategory,
-        description,
-      };
+        sender: senderAccount,
+        recepientBank: receiverAccount,
+        recipient: eventCategory,
+        description: description,
+      };      
       let payload = encryptUserData(data);
       this.rubyService
       .ApiResponseHandler(
         this.rubyService.postApiCallTemplate('SenderReceiver', 'AddOrUpdate', {
           request: payload,
         }),
-        'Event', this.data?.actionType
+        'Sender/Receiver Pair', this.data?.actionType
       )
       .subscribe({
         next: (response) => {

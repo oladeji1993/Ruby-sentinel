@@ -5,7 +5,6 @@
 
   <div class="filter-container">
     <div class="inner-filter">
-      <!-- <div class="view">View:</div> -->
       <div class="filter-dropdown">
         <div class="input-container">
           <select (change)="actionType($event)" style="width: 100%">
@@ -62,12 +61,16 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <div
-                        class="no-record"
-                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                      >
-                        No record Found
-                      </div> -->
+              <div
+                class="no-record"
+                *ngIf="
+                  (allAvailableChannels == null ||
+                  allAvailableChannels == undefined) &&
+                  !tableLoader
+                "
+              >
+                No record found
+              </div>
               <ng-container *ngFor="let item of allAvailableChannels">
                 <tr>
                   <td>{{ item?.name }}</td>
@@ -110,13 +113,17 @@
                 <td>Del...</td>
               </tr>
             </thead>
-            <div
-              class="no-record"
-              *ngIf="allAvailableBanks?.length == 0 && !bankTableLoader"
-            >
-              No record Found
-            </div>
-            <tbody *ngIf="bankTableLoader == false && allAvailableBanks">
+            <tbody>
+              <div
+                class="no-record"
+                *ngIf="
+                  (allAvailableBanks == null ||
+                    allAvailableBanks == undefined) &&
+                  !bankTableLoader
+                "
+              >
+                No record found
+              </div>
               <ng-container *ngFor="let item of allAvailableBanks">
                 <tr>
                   <td>{{ item.name }}</td>
@@ -163,12 +170,16 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <div
-                        class="no-record"
-                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                      >
-                        No record Found
-                      </div> -->
+              <div
+                class="no-record"
+                *ngIf="
+                  (allAvailableTransactions == null ||
+                    allAvailableTransactions == undefined) &&
+                  !transactionTableLoader
+                "
+              >
+                No record found
+              </div>
               <ng-container *ngFor="let item of allAvailableTransactions">
                 <tr>
                   <td>{{ item?.name }}</td>
@@ -215,12 +226,16 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <div
-                        class="no-record"
-                        *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                      >
-                        No record Found
-                      </div> -->
+              <div
+                class="no-record"
+                *ngIf="
+                  (allAvailableCurrency == null ||
+                    allAvailableCurrency == undefined) &&
+                  !currencyTableLoader
+                "
+              >
+                No record found
+              </div>
               <ng-container *ngFor="let item of allAvailableCurrency">
                 <tr>
                   <td>{{ item.name }}</td>

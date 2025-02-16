@@ -108,20 +108,16 @@
           </button>
         </div>
         <div>
-          <button
-            type="submit"
-            class="action-btn"
-            [disabled]="loader"
-          >
-            <span
+          <button type="submit" class="action-btn" [disabled]="loader">
+            <span *ngIf="!loader"
               >{{ data.actionType == "Create" ? "Create" : "Update" }}
             </span>
             <span class="flex justify-center">
-              <!-- <mat-spinner
-                  *ngIf="loading"
-                  diameter="21"
-                  class="mat-spinner-color"
-                ></mat-spinner> -->
+              <mat-spinner
+                *ngIf="loader"
+                diameter="21"
+                class="mat-spinner-color"
+              ></mat-spinner>
             </span>
           </button>
         </div>

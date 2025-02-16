@@ -30,8 +30,8 @@ export class CreateEditTransactionComponent {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        transactionName: this.data.data?.transactionName,
-        transactionCode: this.data.data?.transactionCode,
+        transactionName: this.data.data?.name,
+        transactionCode: this.data.data?.code,
         description: this.data.data?.description,
       };
       this.transactionForm.patchValue(matchedPayload);
@@ -76,7 +76,7 @@ export class CreateEditTransactionComponent {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__zoomOut');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 
@@ -93,7 +93,9 @@ export class CreateEditTransactionComponent {
         name: transactionName,
         code: transactionCode,
         description: description,
-      };
+      };  
+      console.log(data);
+          
       let payload = encryptUserData(data);
       this.rubyService
         .ApiResponseHandler(

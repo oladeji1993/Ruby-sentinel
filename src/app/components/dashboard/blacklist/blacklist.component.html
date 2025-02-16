@@ -59,20 +59,23 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <div
-                      class="no-record"
-                      *ngIf="availableMicroservices?.length == 0 && !dataLoader"
-                    >
-                      No record Found
-                    </div> -->
-              <ng-container *ngFor="let item of items">
+              <div
+                class="no-record"
+                *ngIf="
+                  (allBlacklist == null || allBlacklist == undefined) &&
+                  !tableLoader
+                "
+              >
+                No record Found
+              </div>
+              <ng-container *ngFor="let item of allBlacklist">
                 <tr>
                   <td>{{ item.name }}</td>
                   <td>
-                    <span>{{ item.type }}</span>
+                    <span>{{ item?.type }}</span>
                   </td>
                   <td>
-                    <span>{{ item.code }}</span>
+                    <span>{{ item.number }}</span>
                   </td>
                   <td>{{ item.description }}</td>
                   <td>{{ item.createdBy }}</td>
@@ -85,12 +88,17 @@
                     />
                   </td>
                   <td>
-                    <img (click)="deleteModal(item)" src="/assets/images/dashboard/delete.svg" alt="" />
+                    <img
+                      (click)="deleteModal(item)"
+                      src="/assets/images/dashboard/delete.svg"
+                      alt=""
+                    />
                   </td>
                 </tr>
               </ng-container>
             </tbody>
           </table>
+          <app-table-loader *ngIf="tableLoader"></app-table-loader>
         </div>
       </div>
     </div>

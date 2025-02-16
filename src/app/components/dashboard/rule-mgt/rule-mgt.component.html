@@ -58,17 +58,25 @@
                 >
                   No record Found
                 </div> -->
-            <ng-container *ngFor="let rule of rules">
+            <ng-container *ngFor="let rule of allRules">
               <tr>
-                <td>{{ rule.name }}</td>
+                <td>{{ rule?.name }}</td>
                 <td>
-                  <span class="event_key">{{ rule.Criteria }}</span>
+                  <span *ngFor="let criteria of rule?.transactionCriterias" class="event_key">{{ criteria?.criteria }} = {{ criteria?.value }}</span>
                 </td>
-                <td>{{ rule.Description }}</td>
-                <td [ngClass]="rule.Action === 'HOLD' ? 'holdAndBlock' : rule.Action === 'DELAY' ? 'delay' : ''">
-                  <span>{{ rule.Action }}</span>
+                <td>{{ rule?.description }}</td>
+                <td
+                  [ngClass]="
+                    rule.Action === 'HOLD'
+                      ? 'holdAndBlock'
+                      : rule.Action === 'DELAY'
+                      ? 'delay'
+                      : ''
+                  "
+                >
+                  <span>{{ rule?.action }}</span>
                 </td>
-                <td>{{ rule.Status }}</td>
+                <td>{{ rule?.isApproved }}</td>
                 <td>
                   <img
                     (click)="veiwRuleDetails(rule)"
@@ -97,6 +105,7 @@
             </ng-container>
           </tbody>
         </table>
+        <app-table-loader *ngIf="tableLoader"></app-table-loader>
       </div>
     </div>
   </div>

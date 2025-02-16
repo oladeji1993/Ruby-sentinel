@@ -111,7 +111,9 @@ export class CreateAndEditEventComponent implements OnInit {
         keyWord: eventTitle,
         category: eventCategory,
         description: description,
-      };      
+      };  
+      console.log(data);
+          
       let payload = encryptUserData(data);
       this.rubyService
         .ApiResponseHandler(

@@ -26,8 +26,8 @@ export class CreateEditBankComponent {
     this.initializeForm();
     if (this.data?.data !== '') {
       let matchedPayload = {
-        bankName: this.data.data?.bankName,
-        bankCode: this.data.data?.bankCode,
+        bankName: this.data.data?.name,
+        bankCode: this.data.data?.code,
         description: this.data.data?.description,
       };
       this.bankForm.patchValue(matchedPayload);
@@ -72,7 +72,7 @@ export class CreateEditBankComponent {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__zoomOut');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 
