@@ -6,10 +6,12 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import {
   decryptLoginData,
   encryptLoginData,
+  errorNotifier,
   regexValidator,
 } from 'src/app/core/utils/helpers';
 import jwt_decode from 'jwt-decode';
 import { OtpComponent } from './otp/otp.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     public fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef
   ) {}
@@ -140,7 +143,7 @@ export class LoginComponent implements OnInit {
             tokenInfo[
               'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
             ];
-          this.loader = false;          
+          this.loader = false;
           localStorage.setItem('loggedInUserEmail', email);
           localStorage.setItem('userRight', tokenInfo?.Permission);
           localStorage.setItem('userId', userId);
@@ -165,12 +168,12 @@ export class LoginComponent implements OnInit {
           this.getLoggedInUserDetails(userId);
         } else if (apiResponse.isSuccess === false) {
           this.loader = false;
-          // this.toastr.error('error', apiResponse?.responseDescription);
+          errorNotifier(this.snackBar, apiResponse?.message);
         }
       },
       (err: any) => {
         this.loader = false;
-        // this.toastr.error(err.message, 'Error');
+        errorNotifier(this.snackBar, err.message);
       }
     );
   }

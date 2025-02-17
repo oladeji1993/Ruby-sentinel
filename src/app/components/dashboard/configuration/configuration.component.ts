@@ -24,6 +24,7 @@ export class ConfigurationComponent implements OnInit {
   allAvailableTransactions: any;
   allAvailableCurrency: any;
   currencyTableLoader: any = false;
+  search: any;
 
   constructor(
     private dialog: MatDialog,

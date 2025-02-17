@@ -12,7 +12,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 @NgModule({
   declarations: [AppComponent, SuccessModalComponent],
   imports: [

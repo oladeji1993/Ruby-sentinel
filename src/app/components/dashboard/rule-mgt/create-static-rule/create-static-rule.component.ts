@@ -52,7 +52,7 @@ export class CreateStaticRuleComponent implements OnInit {
       .getElementsByClassName('animate__animated')[0]
       .classList.add('animate__slideOutRight');
     setTimeout(() => {
-      this.dialogRef.close({ data: '' });
+      this.dialogRef.close({ data: item });
     }, 700);
   }
 

@@ -21,6 +21,7 @@ export class MonitoredEventComponent implements OnInit {
   allRetrivedEvents: any;
   allMonitoredEvents: any;
   tableLoader: boolean = false;
+  search: any;
 
   constructor(
     private dialog: MatDialog,

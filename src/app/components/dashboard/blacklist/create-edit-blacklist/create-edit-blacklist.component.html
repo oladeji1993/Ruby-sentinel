@@ -18,27 +18,70 @@
     <div class="form-container">
       <div class="input-container">
         <label class="label" for="email"> Item Type </label>
-        <select (change)="selectedItem($event)" formControlName="type">
+        <select [disabled]="isReadOnly" (change)="selectedItem($event)" formControlName="type">
           <option value="banks">Banks</option>
           <option value="accounts">Accounts</option>
           <option value="bvn">(BVN) Bank Verification Number</option>
-          <option value="currency">Currency</option>
+          <!-- <option value="currency">Currency</option>
           <option value="channels">Channels</option>
-          <option value="transaction-type">Transaction Types</option>
+          <option value="transaction-type">Transaction Types</option> -->
         </select>
+        <mat-error
+          class="alert"
+          *ngIf="
+            (blacklistFormControl['type'].touched || submitted) &&
+            blacklistFormControl['type']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("type") }}
+        </mat-error>
       </div>
 
-      <div *ngIf="selectedItemType === 'banks'" class="input-container">
-        <label class="label" for="email"> Bank Code </label>
+      <div
+        *ngIf="
+          selectedItemType === 'banks' ||
+          selectedItemType === 'accounts' ||
+          selectedItemType === 'bvn'
+        "
+        class="input-container"
+      >
+        <label class="label" for="email">
+          {{
+            selectedItemType === "banks"
+              ? "Bank Code"
+              : selectedItemType === "accounts"
+              ? "Account Number"
+              : "BVN"
+          }}
+        </label>
         <input
           formControlName="code"
           matInput
           class="custom-input form-control"
           type="text"
         />
+        <mat-error
+          class="alert"
+          *ngIf="
+            (blacklistFormControl['code'].touched || submitted) &&
+            blacklistFormControl['code']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("code") }}
+        </mat-error>
       </div>
 
-      <div *ngIf="selectedItemType === 'accounts'" class="input-container">
+      <!-- <div *ngIf="selectedItemType === 'accounts'" class="input-container">
         <label class="label" for="email"> Account Number </label>
         <input
           formControlName="name"
@@ -46,9 +89,9 @@
           class="custom-input form-control"
           type="text"
         />
-      </div>
+      </div> -->
 
-      <div *ngIf="selectedItemType === 'bvn'" class="input-container">
+      <!-- <div *ngIf="selectedItemType === 'bvn'" class="input-container">
         <label class="label" for="email"> BVN </label>
         <input
           formControlName="name"
@@ -56,16 +99,16 @@
           class="custom-input form-control"
           type="text"
         />
-      </div>
+      </div> -->
 
-      <div *ngIf="selectedItemType === 'banks'" class="input-container">
+      <!-- <div *ngIf="selectedItemType === 'banks'" class="input-container">
         <label class="label" for="email"> Select Bank </label>
         <select formControlName="type">
           <option value="banks">Access Bank</option>
           <option value="accounts">UBA</option>
           <option value="bvn">Sterling Bank</option>
         </select>
-      </div>
+      </div> -->
 
       <div
         *ngIf="
@@ -82,6 +125,20 @@
           class="custom-input form-control"
           type="text"
         />
+        <mat-error
+          class="alert"
+          *ngIf="
+            (blacklistFormControl['name'].touched || submitted) &&
+            blacklistFormControl['name']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("name") }}
+        </mat-error>
       </div>
 
       <div
@@ -99,6 +156,20 @@
           rows="10"
           cols="50"
         ></textarea>
+        <mat-error
+          class="alert"
+          *ngIf="
+            (blacklistFormControl['description'].touched || submitted) &&
+            blacklistFormControl['description']?.invalid
+          "
+        >
+          <img
+            src="/assets/icons/error.svg"
+            alt=""
+            class="img-fluid error-icon"
+          />
+          {{ getErrorMessage("description") }}
+        </mat-error>
       </div>
 
       <div class="buttons">

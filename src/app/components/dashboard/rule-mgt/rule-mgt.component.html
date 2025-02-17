@@ -11,8 +11,9 @@
     <div class="filter-input">
       <div class="form-container input-container">
         <input
+          [(ngModel)]="search"
           matInput
-          placeholder="Searh"
+          placeholder="Searh by name, description"
           class="custom-input form-control"
           type="text"
         />
@@ -58,11 +59,17 @@
                 >
                   No record Found
                 </div> -->
-            <ng-container *ngFor="let rule of allRules">
+            <ng-container
+              *ngFor="let rule of allRules | filter : search as folder"
+            >
               <tr>
                 <td>{{ rule?.name }}</td>
                 <td>
-                  <span *ngFor="let criteria of rule?.transactionCriterias" class="event_key">{{ criteria?.criteria }} = {{ criteria?.value }}</span>
+                  <span
+                    *ngFor="let criteria of rule?.transactionCriterias"
+                    class="event_key"
+                    >{{ criteria?.criteria }} = {{ criteria?.value }}</span
+                  >
                 </td>
                 <td>{{ rule?.description }}</td>
                 <td

@@ -38,6 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreateEditBankComponent } from './configuration/create-edit-bank/create-edit-bank.component';
 import { CreateEditTransactionComponent } from './configuration/create-edit-transaction/create-edit-transaction.component';
 import { CreateEditCurrencyComponent } from './configuration/create-edit-currency/create-edit-currency.component';
+import { FilterPipe } from 'src/app/core/utils/search.pipe';
 
 
 
@@ -68,6 +69,7 @@ import { CreateEditCurrencyComponent } from './configuration/create-edit-currenc
     RequestDetailsComponent,
     SettingsComponent,
     AddUserComponent,
+    FilterPipe,
     CreateEditBankComponent,
     CreateEditTransactionComponent,
     CreateEditCurrencyComponent

@@ -16,16 +16,18 @@ export class FilterPipe implements PipeTransform {
     const lowerCaseSearchValue = searchValue.toLowerCase();
 
     return value.filter((v: any) => {
-      const applicationName = v.applicationName?.toLowerCase() || '';
-      const email = v.email?.toLowerCase() || '';
-      const endpointName = v.name?.toLowerCase() || '';
-      const endpointKeyname = v.endpointName?.toLowerCase() || '';
+      const name = v.name?.toLowerCase() || '';
+      const code = v.code?.toLowerCase() || '';
+      const sender = v.sender?.toLowerCase() || '';
+      const recepientBank = v.recepientBank?.toLowerCase() || '';
+      const description = v.description?.toLowerCase() || '';
 
       return (
-        applicationName.indexOf(lowerCaseSearchValue) > -1 ||
-        email.indexOf(lowerCaseSearchValue) > -1 ||
-        endpointName.indexOf(lowerCaseSearchValue) > -1 ||
-        endpointKeyname.indexOf(lowerCaseSearchValue) > -1
+        name.indexOf(lowerCaseSearchValue) > -1 ||
+        code.indexOf(lowerCaseSearchValue) > -1 ||
+        sender.indexOf(lowerCaseSearchValue) > -1 ||
+        description.indexOf(lowerCaseSearchValue) > -1 ||
+        recepientBank.indexOf(lowerCaseSearchValue) > -1
 
       );
     });

@@ -19,7 +19,8 @@
       <div class="form-container input-container">
         <input
           matInput
-          placeholder="Quick find"
+          [(ngModel)]="search"
+          placeholder="Quick find by name, code, description"
           class="custom-input form-control"
           type="text"
         />
@@ -71,7 +72,7 @@
               >
                 No record found
               </div>
-              <ng-container *ngFor="let item of allAvailableChannels">
+              <ng-container *ngFor="let item of allAvailableChannels | filter : search as folder">
                 <tr>
                   <td>{{ item?.name }}</td>
                   <td>
@@ -124,7 +125,7 @@
               >
                 No record found
               </div>
-              <ng-container *ngFor="let item of allAvailableBanks">
+              <ng-container *ngFor="let item of allAvailableBanks | filter : search as folder">
                 <tr>
                   <td>{{ item.name }}</td>
                   <td>
@@ -180,7 +181,7 @@
               >
                 No record found
               </div>
-              <ng-container *ngFor="let item of allAvailableTransactions">
+              <ng-container *ngFor="let item of allAvailableTransactions | filter : search as folder">
                 <tr>
                   <td>{{ item?.name }}</td>
                   <td>
@@ -236,7 +237,7 @@
               >
                 No record found
               </div>
-              <ng-container *ngFor="let item of allAvailableCurrency">
+              <ng-container *ngFor="let item of allAvailableCurrency | filter : search as folder">
                 <tr>
                   <td>{{ item.name }}</td>
                   <td>

@@ -63,6 +63,8 @@ export class BlacklistComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.allBlacklist = response?.value;
+          console.log(this.allBlacklist);
+          
           this.tableLoader = false;
         },
         error: (error) => {

@@ -13,6 +13,7 @@ export class RuleMgtComponent implements OnInit {
   isEmpty: boolean = false;
   allRules: any;
   tableLoader: boolean = false;
+  search: any;
 
   constructor(private dialog: MatDialog, private gap: RubyService) {}
 
@@ -30,7 +31,11 @@ export class RuleMgtComponent implements OnInit {
       position: { right: '0' },
       disableClose: true,
     });
-    // dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res?.data == true) {
+        this.getAllRules();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -107,13 +112,12 @@ export class RuleMgtComponent implements OnInit {
   ];
 
   getAllRules() {
+    this.tableLoader = true;
     this.gap
       .getApiResponseHandler(this.gap.getApiCallTemplate('Rules', 'GetAll'), '')
       .subscribe({
         next: (response) => {
-          this.allRules = response.value
-          console.log(this.allRules);
-          
+          this.allRules = response.value;
           this.tableLoader = false;
         },
         error: (error) => {

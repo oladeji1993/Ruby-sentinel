@@ -4,20 +4,12 @@
   </div>
 
   <div class="filter-container">
-    <div class="inner-filter">
-      <!-- <div class="view">View:</div> -->
-      <div class="filter-dropdown">
-        <div class="input-container">
-          <select style="width: 100%">
-            <option>All Types</option>
-            <option>Timed event</option>
-          </select>
-        </div>
-      </div>
+    <div class="inner-filter filter-input">
       <div class="form-container input-container">
         <input
           matInput
-          placeholder="Quick find"
+          [(ngModel)]="search"
+          placeholder="Quick find by sender, recepientBank, description"
           class="custom-input form-control"
           type="text"
         />
@@ -68,7 +60,7 @@
               >
                 No record Found
               </div>
-              <ng-container *ngFor="let item of allrecvPairlist">
+              <ng-container *ngFor="let item of allrecvPairlist | filter : search as folder">
                 <tr>
                   <td>{{ item?.sender }}</td>
                   <td>

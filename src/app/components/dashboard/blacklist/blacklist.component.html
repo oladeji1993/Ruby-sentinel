@@ -78,8 +78,8 @@
                     <span>{{ item.number }}</span>
                   </td>
                   <td>{{ item.description }}</td>
-                  <td>{{ item.createdBy }}</td>
-                  <td>{{ item.date }}</td>
+                  <td>{{ item?.createdBy }}</td>
+                  <td>{{ item?.dateCreated | date : "dd/MM/yyyy" }}</td>
                   <td>
                     <img
                       (click)="createAndEdit(item)"

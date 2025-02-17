@@ -3,7 +3,7 @@
 
   .close {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 
     img {
       cursor: pointer;
@@ -34,4 +34,8 @@
     padding: 10px 12px 10px 12px;
     border-radius: 8px;
   }
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #ffffff !important;
 }

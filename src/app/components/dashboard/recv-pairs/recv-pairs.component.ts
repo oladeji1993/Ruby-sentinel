@@ -12,6 +12,7 @@ import { RubyService } from 'src/app/core/services/ruby.service';
 export class RecvPairsComponent implements OnInit {
   allrecvPairlist: any;
   tableLoader: boolean = false;
+  search:any;
 
   constructor(private dialog: MatDialog, private gap: RubyService) {}
 

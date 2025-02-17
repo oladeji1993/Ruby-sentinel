@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment.prod';
 // import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { errorNotifier } from 'src/app/core/utils/helpers';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-otp',
@@ -24,9 +26,9 @@ export class OtpComponent {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private dialogRef: MatDialogRef<OtpComponent>
-  ) // private toastr: ToastrService
-  {}
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<OtpComponent> // private toastr: ToastrService
+  ) {}
 
   config = {
     allowNumbersOnly: true,
@@ -82,7 +84,6 @@ export class OtpComponent {
     if (!this.otpCode) {
       this.notValid = true;
     } else {
-      // this.router.navigate(['/dashboard/microservices']);
       let username = localStorage.getItem('loggedInUserEmail');
       let data = {
         userName: username,
@@ -104,7 +105,7 @@ export class OtpComponent {
             this.router.navigate(['/dashboard']);
           } else {
             this.loader = false;
-            // this.toastr.error('error', 'An error Occurred');
+            errorNotifier(this.snackBar, 'Unable to process');
           }
         },
         (err) => {
@@ -112,8 +113,8 @@ export class OtpComponent {
           if (err?.error?.data) {
             let returnedError = err?.error?.data;
             this.decryptData(returnedError);
-            let errorResponse = JSON.parse(this.decryptedResponse);            
-            // this.toastr.error(errorResponse?.message, 'Error');
+            let errorResponse = JSON.parse(this.decryptedResponse);
+            errorNotifier(this.snackBar, errorResponse?.message);
           }
         }
       );

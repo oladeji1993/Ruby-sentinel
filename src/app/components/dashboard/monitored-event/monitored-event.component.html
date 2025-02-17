@@ -26,7 +26,8 @@
         <!-- <mat-label> Event Category </mat-label> -->
         <input
           matInput
-          placeholder="Search from table"
+          [(ngModel)]="search"
+          placeholder="Search name, type, description"
           class="custom-input form-control"
           type="text"
         />
@@ -62,7 +63,7 @@
             >
               No record Found
             </div>
-            <ng-container *ngFor="let event of allMonitoredEvents">
+            <ng-container *ngFor="let event of allMonitoredEvents | filter : search as folder">
               <tr>
                 <td>{{ event?.name }}</td>
                 <td>
